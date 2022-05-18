@@ -15,12 +15,35 @@
     }
 
     function select_user($connect , $id){
-        $sqlSelect = " SELECT * FROM userstable WHERE user_id = '$id'";
-        $stat = $connect->query($sqlSelect);
+        $sqlSelectUser = " SELECT * FROM userstable WHERE user_id = '$id'";
+
+        $stat = $connect->query($sqlSelectUser);
         $row = $stat->fetch(PDO::FETCH_ASSOC);
         
         return $row ;
     }
+
+    function history_orders($connect ,$id ){
+        $sqlSelectHistoryOrdeers = "SELECT orders_details.order_id , orders.order_id , orders.user_id , orders_details.product_id , products.product_name ,products.product_price , orders_details.quantity ,orders.order_time
+        FROM orders_details 
+        INNER JOIN orders
+        ON orders_details.order_id = orders.order_id
+        INNER JOIN products
+        ON orders_details.product_id = products.product_id
+        WHERE orders.user_id = '$id'
+        ";
+    
+        $stat = $connect->query($sqlSelectHistoryOrdeers);
+        $row = $stat->fetchall(PDO::FETCH_ASSOC);
+
+
+
+        return $row;
+    }
+    // $test = history_orders($connect , 1);
+    // echo "<pre>";
+    // print_r($test);
+    // echo "</pre>";
     
 
  

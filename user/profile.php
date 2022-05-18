@@ -1,3 +1,14 @@
+<?php 
+    require 'user_backend.php';
+    
+    $test_user = select_user($connect , 1);
+    
+    // echo "<pre>";
+    // print_r($test_user);
+    // echo "</pre>";
+    include 'inc/header.php';
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -35,35 +46,35 @@
                 <div class="row mt-3">
                     <div class="col-md-12">
                         <label>Name</label>
-                        <input type="text" class="form-control" placeholder="Name" value="">
+                        <input type="text" class="form-control" placeholder="Name" value="<?php echo $test_user['user_name'] ?>">
                     </div>
                 </div>
 
                 <div class="row mt-3">
                     <div class="col-md-12">
                         <label>Email</label>
-                        <input type="text" class="form-control" placeholder="Email" value="">
+                        <input type="email" class="form-control" placeholder="Email" value="<?php echo $test_user['user_email'] ?>">
                     </div>
                 </div>
 
                 <div class="row mt-3">
                     <div class="col-md-12">
                         <label>Password</label>
-                        <input type="text" class="form-control" placeholder="Password" value="">
+                        <input type="password" class="form-control" placeholder="Password" value="<?php echo $test_user['user_password'] ?>">
                     </div>
                 </div>
 
                 <div class="row mt-3">
                     <div class="col-md-12">
                         <label>Address</label>
-                        <input type="text" class="form-control" placeholder="Adress" value="">
+                        <input type="text" class="form-control" placeholder="Adress" value="<?php echo $test_user['user_address'] ?>">
                     </div>
                 </div>
 
                 <div class="row mt-3">
                     <div class="col-md-12">
                         <label>Phone</label>
-                        <input type="text" class="form-control" placeholder="Phone" value="">
+                        <input type="text" class="form-control" placeholder="Phone" value="<?php echo $test_user['user_phone'] ?>">
                     </div>
                 </div>
 
@@ -78,5 +89,6 @@
  
 </body>
 </html>
+<?php include 'inc/footer.php'?>
 
 

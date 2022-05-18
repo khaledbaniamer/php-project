@@ -1,6 +1,18 @@
 <?php 
-require "connect.php";
+require 'user_backend.php';
 
+$test_user = history_orders($connect , 1);
+
+
+$arr1 =[];
+for ($i=0; $i < count($test_user) ; $i++) { 
+    if(!in_array($test_user[$i]['order_id'] , $arr1)){
+        array_push($arr1 , $test_user[$i]['order_id']);
+        
+    }
+}
+
+include 'inc/header.php';
 
 ?>
 
@@ -36,64 +48,21 @@ require "connect.php";
         <div class="col-sm-9 border-right">
             <div class="p-3 py-5">
              
-            <table class="table table-striped">
-                <thead>
-                    <tr>
-                        <th scope="col">Order ID</th>
-                        <td scope="col">202001554</td>
-                        <th scope="col">Order Date</th>
-                        <td scope="col">25-2-2019</td>
-                    </tr>
-                </thead> 
-                <thead>  
-                    <tr>
-                        <th scope="col">Product Name</th>
-                        <th scope="col">QTY</th>
-                        <th scope="col">Price</th>
-                        <th scope="col">Total Price</th>
-                    </tr>
-                </thead>
-                <tbody>    
-                    <tr>
-                        <td >product 1</td>
-                        <td >3</td>
-                        <td >25$</td>
-                        <td >75$</td>
-                    </tr>
-                    <tr>
-                        <td >product 2</td>
-                        <td >2</td>
-                        <td >20$</td>
-                        <td >40$</td>
-                    </tr>
-                    <tr>
-                        <td >product 3</td>
-                        <td >4</td>
-                        <td >15$</td>
-                        <td >60$</td>
-                    </tr>
-                    <tr>
-                        <th scope="col">Totla QTY</th>
-                        <td scope="col">9</td>
-                        <th scope="col">Total Price</th>
-                        <td scope="col">175$</td>
-                    </tr>
-                </tbody> 
-               
-            </table>  
-        </div>
-    </div>
+            
+ 
+        
+    <?php for($i=0 ; $i<count($arr1) ; $i++){ ?>
     <div class="col-md-3 border-right"></div>
     <div class="col-md-9 border-right ">
-            <div class="p-3 py-1">
+            <div class="p-3 py-4">
              
             <table class="table table-striped">
                 <thead>
                     <tr>
                         <th scope="col">Order ID</th>
-                        <td>202001554</td>
+                        <td><?php echo $arr1[$i]?></td>
                         <th scope="col">Order Date</th>
-                        <td>25-2-2019</td>
+                        <td></td>
                     </tr>
                 </thead> 
                 <thead>  
@@ -101,45 +70,51 @@ require "connect.php";
                         <th scope="col">Product Name</th>
                         <th scope="col">QTY</th>
                         <th scope="col">Price</th>
-                        <th scope="col">Total Price</th>
+                        <th scope="col">Total Price/product</th>
                     </tr>
                 </thead>
-                <tbody>    
+                <tbody>
+                    <?php 
+                    $total_price_order = 0;
+                    $total_qty_order = 0;
+                    for($j=0 ; $j<count($test_user);$j++){
+                            if($test_user[$j]['order_id'] == $arr1[$i]){
+                                $total_price_order += $test_user[$j]['product_price'] * $test_user[$j]['quantity'] ;
+                                $total_qty_order += $test_user[$j]['quantity'];
+                        ?>    
                     <tr>
-                        <td >product 1</td>
-                        <td >3</td>
-                        <td >25$</td>
-                        <td >75$</td>
+                        <td ><?php echo $test_user[$j]['product_name'] ?></td>
+                        <td ><?php echo $test_user[$j]['quantity'] ?></td>
+                        <td ><?php echo $test_user[$j]['product_price']  ?></td>
+                       
+                        <td ><?php echo $test_user[$j]['product_price'] * $test_user[$j]['quantity']  ?></td>
+                        
+                        
                     </tr>
-                    <tr>
-                        <td >product 2</td>
-                        <td >2</td>
-                        <td >20$</td>
-                        <td >40$</td>
-                    </tr>
-                    <tr>
-                        <td >product 3</td>
-                        <td >4</td>
-                        <td >15$</td>
-                        <td >60$</td>
-                    </tr>
+                    <?php } ?>
+                    <?php } ?>  
+                            
                     <tr>
                         <th scope="col">Totla QTY</th>
-                        <td scope="col">9</td>
+                        <td scope="col"><?php echo $total_qty_order ?></td>
                         <th scope="col">Total Price</th>
-                        <td scope="col">175$</td>
+                        <td scope="col"><?php echo $total_price_order ?></td>
                     </tr>
+
                 </tbody> 
                
             </table>  
         </div>
     </div>
-</div>
-
-</div>
-
-</div>
+    <?php } ?>
     
+</div>
+
+</div>
+
+</div>
+</div>
+    </div>
 </body>
 </html>
-
+<?php include 'inc/footer.php'?>
