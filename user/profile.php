@@ -1,12 +1,12 @@
 <?php 
     require 'user_backend.php';
     
-    $test_user = select_user($connect , 1);
+    $test_user = select_user($connect , 2);
     
     // echo "<pre>";
     // print_r($test_user);
     // echo "</pre>";
-    include 'inc/header.php';
+    include_once 'inc/header.php';
 
 ?>
 <!DOCTYPE html>
@@ -43,42 +43,47 @@
                 <div class="d-flex justify-content-between align-items-center mb-3">
                     <h4 class="text-right">Profile Settings</h4>
                 </div>
+                <form method="post" >
                 <div class="row mt-3">
                     <div class="col-md-12">
                         <label>Name</label>
-                        <input type="text" class="form-control" placeholder="Name" value="<?php echo $test_user['user_name'] ?>">
+                        <input type="text" class="form-control" name="user_name" placeholder="Name" value="<?php echo $test_user['user_name'] ?>">
                     </div>
                 </div>
 
                 <div class="row mt-3">
                     <div class="col-md-12">
                         <label>Email</label>
-                        <input type="email" class="form-control" placeholder="Email" value="<?php echo $test_user['user_email'] ?>">
+                        <input type="email" class="form-control" name="user_email" placeholder="Email" value="<?php echo $test_user['user_email'] ?>">
                     </div>
                 </div>
 
                 <div class="row mt-3">
                     <div class="col-md-12">
                         <label>Password</label>
-                        <input type="password" class="form-control" placeholder="Password" value="<?php echo $test_user['user_password'] ?>">
+                        <input type="password" class="form-control" name="user_pass" placeholder="Password" value="<?php echo $test_user['user_password'] ?>">
                     </div>
                 </div>
 
                 <div class="row mt-3">
                     <div class="col-md-12">
                         <label>Address</label>
-                        <input type="text" class="form-control" placeholder="Adress" value="<?php echo $test_user['user_address'] ?>">
+                        <input type="text" class="form-control" name="user_address" placeholder="Adress" value="<?php echo $test_user['user_address'] ?>">
                     </div>
                 </div>
 
                 <div class="row mt-3">
                     <div class="col-md-12">
                         <label>Phone</label>
-                        <input type="text" class="form-control" placeholder="Phone" value="<?php echo $test_user['user_phone'] ?>">
+                        <input type="text" class="form-control"  placeholder="Phone" value="<?php echo $test_user['user_phone'] ?>" name="user_phone">
                     </div>
                 </div>
 
-                <div class="mt-5 text-center"><button class="btn btn-primary profile-button" type="button">Save Profile</button></div>
+                <div class="mt-5 text-center">
+                    <input class="btn btn-primary profile-button"  type="submit" value="Save Profile" name="update">
+                </div>
+
+            </form>    
             </div>
 
         </div>
@@ -86,9 +91,27 @@
 </div>
 </div>
 </div>
+<?php 
+ if(isset($_POST['update'])){
+    $user_name = $_POST['user_name'];
+    $user_email = $_POST['user_email'];
+    $user_password = $_POST['user_pass'];
+    $user_address = $_POST['user_address'];
+    $user_phone = $_POST['user_phone'];
+
+    update_user($connect , $user_name ,$user_address ,$user_email ,$user_password ,$user_phone ,2);
+    echo '<script type="text/javascript">
+       window.onload = function () { alert("Update Done"); } 
+    </script>'; 
+    
+}
+
+?>
+
+
  
 </body>
 </html>
-<?php include 'inc/footer.php'?>
+
 
 

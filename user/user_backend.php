@@ -46,7 +46,22 @@
     // echo "</pre>";
     
 
- 
+    function update_user($connect ,$name , $address , $email , $pass , $phone , $id){
+
+        $sqlUpdate = "UPDATE userstable SET user_name=:name,user_address=:address,user_email=:email,user_password=:pass,user_phone=:phone WHERE user_id = '$id'  
+
+        ";
+
+        $stat = $connect->prepare($sqlUpdate);
+
+        $stat->execute([
+           ':name'=>$name , 
+           ':address'=>$address,
+           ':email'=>$email,
+           ':pass'=>$pass,
+           ':phone'=>$phone 
+        ]);
+    }
     
 
 
