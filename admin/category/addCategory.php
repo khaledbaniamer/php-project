@@ -2,6 +2,7 @@
 include_once "../../inc/header.php" ;
 require "../../connect.php";
 require "category_backend.php";
+include_once "../index.php";
 
 
 ?>
