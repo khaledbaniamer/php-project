@@ -12,7 +12,7 @@ for ($i=0; $i < count($test_user) ; $i++) {
     }
 }
 
-include 'inc/header.php';
+include '../inc/header.php';
 
 ?>
 
@@ -117,4 +117,5 @@ include 'inc/header.php';
     </div>
 </body>
 </html>
-<?php include 'inc/footer.php'?>
+<?php include_once '../inc/footer.php'; ?>
+

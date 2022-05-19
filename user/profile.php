@@ -6,7 +6,7 @@
     // echo "<pre>";
     // print_r($test_user);
     // echo "</pre>";
-    include_once 'inc/header.php';
+    include_once '../inc/header.php';
 
 ?>
 <!DOCTYPE html>
@@ -108,7 +108,7 @@
 
 ?>
 
-
+<?php include_once '../inc/footer.php'; ?>
  
 </body>
 </html>
