@@ -5,7 +5,7 @@ $password="";
 $pdo=new PDO('mysql:host=localhost;dbname=sport_goods',$user,$password);
 $pdo->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
  
-
+$flage= 0;
 if($_SERVER["REQUEST_METHOD"] == "POST"){
 
     $name= $_POST["name"];
@@ -13,17 +13,17 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     $email= $_POST["email"];
     $pass= $_POST["pass"];
     $phone= $_POST["phone"];
-    $flage= $_POST["flage"];
+    
 
     $adding =$pdo->prepare(" INSERT INTO userstable (user_name, user_address, user_email, user_password , user_phone , flage)
                    VALUES (:name ,:address ,:email,:pass,:phone,:flage)");
 
-    $adding->bindValue(':name',$name);
-    $adding->bindValue(':address',$address);
-    $adding->bindValue(':email',$email);
-    $adding->bindValue(':pass',$pass);
-    $adding->bindValue(':phone',$phone);
-    $adding->bindValue(':flage',$flage);
+    $adding->bindParam(':name',$name);
+    $adding->bindParam(':address',$address);
+    $adding->bindParam(':email',$email);
+    $adding->bindParam(':pass',$pass);
+    $adding->bindParam(':phone',$phone);
+    $adding->bindParam(':flage',$flage);
 
 
     $adding->execute();
@@ -46,7 +46,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
   </head>
   <body>
-  <div><?php include '../header.php' ?></div>
+  
       
   <div class="container" style="min-height: 700px;">
       <h1>CREAT user</h1>
@@ -73,10 +73,6 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     <label for="exampleFormControlInput1">phone</label>
     <input type="text" class="form-control" id="exampleFormControlInput1" name="phone">
   </div>
-  <div class="form-group">
-    <label for="exampleFormControlInput1">flage</label>
-    <input type="text" class="form-control" id="exampleFormControlInput1" name="flage">
-  </div>
 
   <div class="form-group">
   <button type="submit" class="btn btn lg btn-outline-primary">add</button>
@@ -84,7 +80,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 </form>
 
       </div>
-      <div><?php include '../footer.php' ?></div>
+
 
 
     <!-- Optional JavaScript -->

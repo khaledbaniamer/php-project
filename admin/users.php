@@ -6,7 +6,7 @@ $pdo->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
 
 
 $ana= " SELECT * FROM userstable ";
-$products=$pdo->query($ana);
+$users=$pdo->query($ana);
 
 ?>
 <!doctype html>
@@ -21,7 +21,7 @@ $products=$pdo->query($ana);
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
   </head>
   <body>
-      <?php include '../header.php' ?>
+      
 
       <div class="container" style="min-height: 700px;">
       <h1> USERS PAGE </h1>
@@ -37,39 +37,36 @@ $products=$pdo->query($ana);
       <th scope="col">E-mail</th>
       <th scope="col"> password</th>
       <th scope="col">phone </th>
-      <th scope="col">flage </th>
-      <th scope="col">edit / delete </th>
+      <th scope="col">Action</th>
 
     </tr>
   </thead>
   <tbody>
     <tr>
-        <?php  foreach( $products as $product ): ?>
+        <?php  foreach( $users as $user ): ?>
 
-      <th scope="row"><?php echo $product["user_id"] ?></th>
+      <th scope="row"><?php echo $user["user_id"] ?></th>
 
-      <td><?php echo $product["user_name"] ?></td>
+      <td><?php echo $user["user_name"] ?></td>
 
-      <td><?php echo $product["user_address"] ?></td>
+      <td><?php echo $user["user_address"] ?></td>
 
-      <td> <?php echo $product["user_email"] ?></td>
+      <td> <?php echo $user["user_email"] ?></td>
 
-      <td><?php echo $product["user_password"] ?></td>
+      <td><?php echo $user["user_password"] ?></td>
       
-      <td><?php echo $product["user_phone"] ?></td>
+      <td><?php echo $user["user_phone"] ?></td>
 
-      <td><?php echo $product["flage"] ?></td>
 
       <td>
 
-      <form action="updateuser.php" method="get" style="display:inline-block;">
-      <input type="hidden" value=<?php echo $product["user_id"] ?> name="id">
+      <form action="index.php" method="get" style="display:inline-block;">
+      <input type="hidden" value=<?php echo $user["user_id"] ?> name="updateuser">
       <button type="submit" class="btn btn-sm btn-outline-secondary">edit</button>
       </form>
-
-      <form action="deleteuser.php" method="post" style="display:inline-block;">
-      <input type="hidden" value=<?php echo $product["user_id"] ?> name="id">
-      <button type="submit" class="btn btn-sm btn-outline-danger">delete</button>
+      <form action="" method="post" style="display:inline-block;">
+            <input type="hidden" value="<?php echo $user["user_id"] ?>" name="deleteuser">
+            <input type="submit" name ="delete1" class="btn btn-sm btn btn-dange" value="delete">
       </form>
 
       </td>
@@ -80,8 +77,16 @@ $products=$pdo->query($ana);
   </tbody>
 </table>
 </div>
-<div><?php include '../footer.php' ?></div>
+<?php 
+if(isset($_POST['delete1'])){
 
+$id = $_POST['deleteuser'];
+echo $id;
+$sqlDelete = "DELETE FROM userstable WHERE user_id = '$id'";
+$pdo->exec($sqlDelete);
+
+}
+?>
 
 
 

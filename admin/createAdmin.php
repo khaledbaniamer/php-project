@@ -1,10 +1,5 @@
 <?php 
-
-
 require "category_backend.php";
-
-
-
 ?>
 <!doctype html>
 <html lang="en">
@@ -21,18 +16,26 @@ require "category_backend.php";
   <div></div>
       
   <div class="container mt-5" style="min-height: 700px; width:50%">
-      <h1>Add New Category</h1>
+      <h1>Add New Admin</h1>
      
       <br>
       <form method="post"  enctype='multipart/form-data'>
             <div class="form-group">
-              <label for="exampleFormControlInput1">Category Name</label>
-              <input type="text" class="form-control" id="exampleFormControlInput1" name="category_name">
+              <label for="exampleFormControlInput1">Admin Name</label>
+              <input type="text" class="form-control"  name="admin_name">
             </div>
+
             <div class="form-group">
-              <label for="exampleFormControlInput1">Category Image</label>
-              <input type="file" class="form-control" id="exampleFormControlInput1" name="category_image" >
+              <label for="exampleFormControlInput1">Admin Email</label>
+              <input type="email" class="form-control"  name="admin_email">
             </div>
+
+            <div class="form-group">
+              <label for="exampleFormControlInput1">Admin Password</label>
+              <input type="text" class="form-control"  name="admin_password">
+            </div>
+
+
             
             <div class="form-group">
             <input type="submit" class="btn btn lg btn-outline-primary" value = "Add" name="submit">
@@ -40,21 +43,16 @@ require "category_backend.php";
 </form>
 
 <?php 
+    if(isset($_POST['submit'])){
+        if(!empty($_POST['admin_name']) && !empty($_POST['admin_email'])&& !empty($_POST['admin_password'])){
 
-if(isset($_POST['submit'])){
-  if(!empty($_POST["category_name"])&& !empty($_FILES["category_image"]["name"])){
-  move_uploaded_file($_FILES["category_image"]["tmp_name"],"image/image_category" . $_FILES["category_image"]["name"]);
-  $category_image = $_FILES["category_image"]["name"];
-  $category_name = $_POST["category_name"];
+            $name = $_POST['admin_name'];
+           $email = $_POST['admin_email'];
+           $password = $_POST['admin_password'];
 
-  echo $category_image;
-  echo $category_name;
-
-  add_category($connect ,$category_name ,$category_image);
-}
-}
-
-
+           add_admin($connect , $name , $email ,$password);
+        }
+    }
 
 ?> 
       </div>

@@ -21,7 +21,7 @@ $products=$pdo->query($ana);
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
   </head>
   <body>
-      <?php include '../header.php' ?>
+
 
       <div class="container" style="min-height: 700px;">
       <h1> COUPONS PAGE </h1>
@@ -31,11 +31,11 @@ $products=$pdo->query($ana);
       <table class="table table-striped">
   <thead>
     <tr>
-      <th scope="col">id</th>
-      <th scope="col">coupons name</th>
-      <th scope="col"> coupons-amount</th>
-      <th scope="col">active</th>
-      <th scope="col">edit / delete</th>
+      <th scope="col">ID</th>
+      <th scope="col">Coupons name</th>
+      <th scope="col"> Coupons-amount</th>
+      <th scope="col">Active</th>
+      <th scope="col">Action</th>
       
 
 
@@ -56,14 +56,13 @@ $products=$pdo->query($ana);
       <td>
       
 
-      <form action="updatecoupon.php" method="get" style="display:inline-block;">
-      <input type="hidden" value=<?php echo $product["discount_id"] ?> name="id">
-      <button type="submit" class="btn btn-sm btn-outline-secondary">edit</button>
+      <form action="index.php" method="get" style="display:inline-block;">
+        <input type="hidden" value=<?php echo $product["discount_id"] ?> name="updatecoupon">
+        <button type="submit" class="btn btn-sm btn-outline-secondary">Edit</button>
       </form>
-
-      <form action="deletecoupon.php" method="post" style="display:inline-block;">
-      <input type="hidden" value=<?php echo $product["discount_id"] ?> name="id">
-      <button type="submit" class="btn btn-sm btn-outline-danger">delete</button>
+      <form action="" method="post" style="display:inline-block;">
+            <input type="hidden" value="<?php echo $product["discount_id"] ?>" name="deletecoupon">
+            <input type="submit" name ="delete1" class="btn btn-sm btn btn-dange" value="delete">
       </form>
 
       </td>
@@ -74,8 +73,17 @@ $products=$pdo->query($ana);
   </tbody>
 </table>
 </div>
-<div><?php include '../footer.php' ?></div>
 
+<?php 
+if(isset($_POST['delete1'])){
+
+$id = $_POST['deletecoupon'];
+echo $id;
+$sqlDelete = "DELETE FROM discount WHERE discount_id = '$id'";
+$pdo->exec($sqlDelete);
+
+}
+?>
 
 
 

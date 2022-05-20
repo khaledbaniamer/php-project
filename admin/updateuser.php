@@ -3,27 +3,22 @@
 
 
 
-$id = $_GET['id'] ?? null;
-if (!$id) {
-    header('Location: users.php');
-    exit;
-}
+$id = $_GET['updateuser'];
+
 
 $pdo = new PDO('mysql:host=localhost;dbname=sport_goods', 'root', '');
 $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-$statement = $pdo->prepare('SELECT * FROM userstable WHERE user_id = :id');
-$statement->bindValue(':id', $id);
-$statement->execute();
-$product = $statement->fetch(PDO::FETCH_ASSOC);
+$statement = $pdo->query("SELECT * FROM userstable WHERE user_id ='$id'");
+$user = $statement->fetch(PDO::FETCH_ASSOC);
 
 
-$name= $product["user_name"];
-$address= $product["user_address"];
-$email= $product["user_email"];
-$pass= $product["user_password"];
-$phone= $product["user_phone"];
-$flage= $product["flage"];
+// $name= $product["user_name"];
+// $address= $product["user_address"];
+// $email= $product["user_email"];
+// $pass= $product["user_password"];
+// $phone= $product["user_phone"];
+// $flage= $product["flage"];
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
@@ -32,7 +27,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   $email= $_POST["email"];
   $pass= $_POST["pass"];
   $phone= $_POST["phone"];
-  $flage= $_POST["flage"];
+  
 
 
     if (!$name) {
@@ -48,8 +43,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                                         user_address = :address, 
                                         user_email = :email, 
                                         user_password = :pass,
-                                        user_phone = :phone,
-                                        flage = :flage WHERE user_id = :id");
+                                        user_phone = :phone
+                                         WHERE user_id = :id");
     
     $statement->bindValue(':id',$id);
     $statement->bindValue(':name',$name);
@@ -57,10 +52,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $statement->bindValue(':email',$email);
     $statement->bindValue(':pass',$pass);
     $statement->bindValue(':phone',$phone);
-    $statement->bindValue(':flage',$flage);
+   
 
         $statement->execute();
-        header('Location: users.php');
+
     }
 
 }
@@ -83,47 +78,44 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 <body>
   <div>
-    <?php include '../header.php' ?>
+
   </div>
 
 
   <div class="continer" style="min-height: 700px;">
-    <a href="users.php">Back to users</a>
-    <h2>edit user: <b><?php echo $name ?></b></h2>
+  
+    <h2>Edit User: </h2>
 
 
     <div class="container">
       <form method="post" enctype="multipart/form-data">
       <div class="form-group">
     <label for="exampleFormControlInput1">user name</label>
-    <input type="text" class="form-control" id="exampleFormControlInput1" name="name" value="<?php echo $name ?>">
+    <input type="text" class="form-control" id="exampleFormControlInput1" name="name" value="<?php echo $user['user_name'] ?>">
   </div>
   <div class="form-group">
     <label for="exampleFormControlInput1">address</label>
-    <input type="text" class="form-control" id="exampleFormControlInput1" name="address" value="<?php echo $address ?>" >
+    <input type="text" class="form-control" id="exampleFormControlInput1" name="address" value="<?php echo $user['user_address'] ?>" >
   </div>
   <div class="form-group">
     <label for="exampleFormControlInput1">E-mail</label>
-    <input type="text" class="form-control" id="exampleFormControlInput1" name="email" value="<?php echo $email ?>">
+    <input type="text" class="form-control" id="exampleFormControlInput1" name="email" value="<?php echo $user['user_email'] ?>">
   </div>
   <div class="form-group">
     <label for="exampleFormControlInput1">password</label>
-    <input type="text" class="form-control" id="exampleFormControlInput1" name="pass" value="<?php echo $pass ?>">
+    <input type="text" class="form-control" id="exampleFormControlInput1" name="pass" value="<?php echo $user['user_password'] ?>">
   </div>
   <div class="form-group">
     <label for="exampleFormControlInput1">phone</label>
-    <input type="text" class="form-control" id="exampleFormControlInput1" name="phone" value="<?php echo $phone ?>">
+    <input type="text" class="form-control" id="exampleFormControlInput1" name="phone" value="<?php echo $user['user_phone'] ?>">
   </div>
-  <div class="form-group">
-    <label for="exampleFormControlInput1">flage</label>
-    <input type="text" class="form-control" id="exampleFormControlInput1" name="flage" value="<?php echo $flage ?>">
-  </div>
+
         <button type="submit" class="btn btn-primary">Submit</button><br>
       </form>
     </div>
   </div>
   <div>
-    <?php include '../footer.php' ?>
+
   </div>
 
 </body>

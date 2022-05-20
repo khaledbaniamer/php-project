@@ -6,7 +6,7 @@
 <?php include "../inc/header.php"; ?>
 <link rel="stylesheet" href="sidebar/css/style.css">
 <div class="nav-side-menu">
-    <div class="brand">Brand Logo</div>
+    <div class="brand">Sport</div>
     <i class="fa fa-bars fa-2x toggle-btn" data-toggle="collapse" data-target="#menu-content"></i>
   
         <div class="menu-list">
@@ -49,15 +49,15 @@
                   <a href="#"><i class="fa fa-car fa-lg"></i> Users <span class="arrow"></span></a>
                 </li>
                 <ul class="sub-menu collapse" id="new">
-                    <li class="active"><a href="#">Add Users</a></li>
-                    <li><a href="#">View Users</a></li>
+                    <li ><a href="index.php?add_user">Add Users</a></li>
+                    <li><a href="index.php?view_user">View Users</a></li>
                 </ul>
                 <li  data-toggle="collapse" data-target="#Copoun">
                   <a href="#"><i class="fa fa-gift fa-lg"></i>Copoun <span class="arrow"></span></a>
                 </li>
                 <ul class="sub-menu collapse" id="Copoun">
-                    <li class="active"><a href="#">Add Copoun</a></li>
-                    <li><a href="#">View Copoun</a></li>
+                    <li><a href="index.php?add_coupon">Add Copoun</a></li>
+                    <li><a href="index.php?view_coupon">View Copoun</a></li>
 
                 </ul>
 
@@ -65,8 +65,8 @@
                   <a href="#"><i class="fa fa-gift fa-lg"></i>Admin <span class="arrow"></span></a>
                 </li>
                 <ul class="sub-menu collapse" id="admin">
-                    <li class="active"><a href="#">Add Admin</a></li>
-                    <li><a href="#">View Admin</a></li>
+                    <li ><a href="index.php?add_admin">Add Admin</a></li>
+                    <li><a href="index.php?view_admin">View Admin</a></li>
 
                 </ul>
 
@@ -82,8 +82,18 @@
   <?php if(isset($_GET['add_product'])) include "creatproduct.php"; ?>
   <?php if(isset($_GET['view_product'])) include "products.php"; ?>
   <?php if(isset($_GET['upadteproduct'])) include "updateproduct.php"; ?>
+  
+  <?php if(isset($_GET['add_user'])) include "creatuser.php"; ?>
+  <?php if(isset($_GET['view_user'])) include "users.php"; ?>
+  <?php if(isset($_GET['updateuser'])) include "updateuser.php"; ?>
+  
+  <?php if(isset($_GET['add_coupon'])) include "creatcoupon.php"; ?>
+  <?php if(isset($_GET['view_coupon'])) include "coupons.php"; ?>
+  <?php if(isset($_GET['updatecoupon'])) include "updatecoupon.php"; ?>
 
-
+  <?php if(isset($_GET['add_admin'])) include "createAdmin.php"; ?>
+  <?php if(isset($_GET['view_admin'])) include "view_admin.php"; ?>
+  <?php if(isset($_GET['updateadmin'])) include "update_admin.php"; ?>
 </div>
 
 <link href="//netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">

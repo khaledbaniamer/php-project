@@ -88,7 +88,7 @@ $cate = $pro->fetchALL(PDO::FETCH_ASSOC);
         <?php endforeach  ?>
         </select>
         </div>
-        <button type="submit" class="btn btn-primary">Update</button><br>
+        <input type="submit" class="btn btn-primary" name="updateproduct" value="Update"><br>
       </form>
     </div>
   </div>
@@ -96,32 +96,32 @@ $cate = $pro->fetchALL(PDO::FETCH_ASSOC);
 
   </div>
 <?php 
-  if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    move_uploaded_file($_FILES["image"]["tmp_name"],"image/product_image/". $_FILES["image"]["name"]);
+  if (isset($_POST['updateproduct'])) {
+    
 
     $title = $_POST['title'];
     $description = $_POST['description'];
     $price = $_POST['price'];
     $cat = $_POST['cat'];
     $image = $_FILES['image']['name'];
-
-    if (!empty($title) && !empty($description) && !empty($price)&& !empty($cat)&& !empty($image) ) {
+    move_uploaded_file($_FILES["image"]["tmp_name"],"image/product_image/". $_FILES["image"]["name"]);
+    if (!empty($title) && !empty($description) && !empty($price)&& !empty($cat) ) {
         $statement = $pdo->prepare("UPDATE products SET product_name = :title, 
                                         product_image = :image, 
                                         category_id = :cat, 
                                         product_description	 = :description, 
-                                        product_price = :price WHERE product_id = :id");
+                                        product_price = :price WHERE product_id = '$id'");
 
 
         $statement->bindParam(':title', $title);
         $statement->bindParam(':cat', $cat);
-        $statement->bindParam(':image', $imagePath);
+        $statement->bindParam(':image', $image);
         $statement->bindParam(':description', $description);
         $statement->bindParam(':price', $price);
 
 
         $statement->execute();
-        header('Location: products.php');
+        header("Location:index.php?upadteproduct=$id.php");
     }
 
 }
