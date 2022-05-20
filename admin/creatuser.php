@@ -48,7 +48,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
   <body>
   
       
-  <div class="container" style="min-height: 700px;">
+  <div class="container" style="min-height: 700px; width:50%">
       <h1>CREAT user</h1>
       <h2><a href="users.php">back to users</a></h2>
       <br>

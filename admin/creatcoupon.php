@@ -37,12 +37,11 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
   </head>
   <body>
   
       
-  <div class="container" style="min-height: 700px;">
+  <div class="container" style="min-height: 700px; width:50%">
       <h1>CREAT user</h1>
       <h2><a href="coupons.php">back to coupons</a></h2>
       <br>

@@ -68,7 +68,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
   <body>
  
       
-  <div class="container" style="min-height: 700px;">
+  <div class="container" style="min-height: 700px; width:50%">
       <h1>CREAT PRODUCT</h1>
       <h2><a href="products.php">back to products</a></h2>
       <br>
