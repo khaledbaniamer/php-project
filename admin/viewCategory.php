@@ -1,6 +1,5 @@
 <?php
-include_once "../../inc/header.php" ;
-require "../../connect.php";
+
 require "category_backend.php";
 
 $all_categories = select_category($connect);
@@ -9,6 +8,7 @@ $all_categories = select_category($connect);
 // print_r($all_categories);
 // echo "</pre>";
 ?> 
+<div >
   <table class="table">
   <thead>
     <tr>
@@ -22,11 +22,11 @@ $all_categories = select_category($connect);
       <?php for($i=0 ; $i<count($all_categories) ; $i++){?>
     <tr>
       <th scope="row"><?php echo ($i+1) ?></th>
-      <td><img src="image/<?php echo $all_categories[$i]['category_image']?>" width=100px height="100px"></td>
+      <td><img src="image/image_category/<?php echo $all_categories[$i]['category_image']?>" width=100px height="100px"></td>
       <td><?php echo $all_categories[$i]['category_name']?></td>
       <td>
-        <form action="update_category.php" method="get" style="display:inline-block;">
-                <input type="hidden"  value=<?php echo $all_categories[$i]["category_id"] ?> name="id">
+        <form action="index.php?" method="get" style="display:inline-block;">
+                <input type="hidden"  value="<?php echo $all_categories[$i]["category_id"] ?>" name="update">
                 <button type="submit" class="btn btn-sm btn-outline-secondary">edit</button>
         </form>
 
@@ -42,7 +42,7 @@ $all_categories = select_category($connect);
    ?>
   </tbody>
 </table> 
-
+</div>
 
           <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
@@ -60,4 +60,3 @@ if(isset($_POST['delete'])){
 }
 ?>
 
-<?php include_once "../../inc/footer.php" ?>

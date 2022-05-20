@@ -1,8 +1,8 @@
 <?php 
-include_once "../../inc/header.php" ;
-require "../../connect.php";
+
+
 require "category_backend.php";
-include_once "../index.php";
+
 
 
 ?>
@@ -15,14 +15,14 @@ include_once "../index.php";
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
   </head>
   <body>
   <div></div>
       
-  <div class="container" style="min-height: 700px;">
+  <div class="container mt-5" style="min-height: 700px; width:50%">
       <h1>Add New Category</h1>
-      <h2><a href="products.php">back to products</a></h2>
+     
       <br>
       <form method="post"  enctype='multipart/form-data'>
             <div class="form-group">
@@ -43,7 +43,7 @@ include_once "../index.php";
 
 if(isset($_POST['submit'])){
   if(!empty($_POST["category_name"])&& !empty($_FILES["category_image"]["name"])){
-  move_uploaded_file($_FILES["category_image"]["tmp_name"],"image/" . $_FILES["category_image"]["name"]);
+  move_uploaded_file($_FILES["category_image"]["tmp_name"],"image/image_category" . $_FILES["category_image"]["name"]);
   $category_image = $_FILES["category_image"]["name"];
   $category_name = $_POST["category_name"];
 

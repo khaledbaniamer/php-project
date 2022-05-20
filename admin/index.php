@@ -3,8 +3,7 @@
 <script src="//netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
 <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
 <!------ Include the above in your HEAD tag ---------->
-
-<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+<?php include "../inc/header.php"; ?>
 <link rel="stylesheet" href="sidebar/css/style.css">
 <div class="nav-side-menu">
     <div class="brand">Brand Logo</div>
@@ -14,7 +13,7 @@
   
             <ul id="menu-content" class="menu-content collapse out">
                 <li>
-                  <a href="">
+                  <a href="index.php">
                     
                   <i class="fa fa-dashboard fa-lg"></i> Dashboard
                   </a>
@@ -26,13 +25,13 @@
                   </a>
                   </li>
 
-                <li  data-toggle="collapse" data-target="#products" class="collapsed active">
+                <li  data-toggle="collapse" data-target="#products" class="collapsed">
                   <a href="#"><i class="fa fa-gift fa-lg"></i>Categories <span class="arrow"></span></a>
                 </li>
                 <ul class="sub-menu collapse" id="products">
-                    <li class="active"><a href="category/addCategory.php">Add Categories</a></li>
-                    <li><a href="#">View Categories</a></li>
-
+                    <li ><a href="index.php?add_category">Add Categories</a></li>
+                    <li><a href="index.php?view_category">View Categories</a></li>
+                    
                 </ul>
 
 
@@ -40,8 +39,8 @@
                   <a href="#"><i class="fa fa-globe fa-lg"></i> Prdoucts <span class="arrow"></span></a>
                 </li>  
                 <ul class="sub-menu collapse" id="service">
-                    <li class="active"><a href="#">Add Prdoucts</a></li>
-                    <li><a href="#">View Prdoucts</a></li>
+                    <li><a href="index.php?add_product">Add Prdoucts</a></li>
+                    <li><a href="index.php?view_product">View Prdoucts</a></li>
                  
                 </ul>
 
@@ -74,6 +73,19 @@
             </ul>
      </div>
 </div>
+<div class="container float-end">
+  <?php if(isset($_GET['view_category'])) include "viewCategory.php"; ?>
+  <?php if(isset($_GET['update'])) include "update_category.php"; ?>
+  <?php if(isset($_GET['add_category'])) include "addCategory.php"; ?>
+
+
+  <?php if(isset($_GET['add_product'])) include "creatproduct.php"; ?>
+  <?php if(isset($_GET['view_product'])) include "products.php"; ?>
+  <?php if(isset($_GET['upadteproduct'])) include "updateproduct.php"; ?>
+
+
+</div>
+
 <link href="//netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 <script src="//netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
 <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
