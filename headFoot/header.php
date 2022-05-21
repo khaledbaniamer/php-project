@@ -243,7 +243,7 @@
                         </li>
                         <li>
                             <div class="dropdown">
-                                <a class="dropbtn" id="navicon" href="http://localhost/php_mysql_project/registration/sign up.php"><img src="../media/icons8-test-account-80 (1).png" width="70%" height="70%"></a>
+                                <a  id="navicon" href="http://localhost/php_mysql_project/registration/sign up.php"><i class="bi bi-person"></i></a>
                                 <div class="dropdown-content">
                                    <?php
                         include "../connect2.php";

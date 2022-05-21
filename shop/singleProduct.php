@@ -96,11 +96,12 @@ if (isset($_GET['id'])) {
       </div>
 
       <?php 
-
+        $count=0;
         if(isset($_POST['add_cart'])){
 
           if(!empty($_POST['quantity'])){
-          
+            $count++;
+          $_SESSION['count'] =  $count;
             // $_SESSION ['quantity'] .= $_POST['quantity']."<br>";
             // $_SESSION ['product_name'] .= $product['product_name']."<br>";
             // $_SESSION ['product_price'] .= $product['product_price']."<br>";

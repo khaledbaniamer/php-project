@@ -121,14 +121,14 @@ $cats = $stmt->fetchAll(PDO::FETCH_ASSOC);
                     <div class="row">
                     <?php foreach ($cats as $cat):?>
                         <div class="col-md-4">
-                            <div class="card text-white card-has-bg click-col" style="background-image:url('media/d79e502d-9282-4131-b187-081f33f123d4.webp');">
+                            <div class="card text-white card-has-bg click-col" style="background-image:url('admin/image/image_category/<?php echo $cat['category_image']?>'); background-size:cover">
                                 <div class="card-img-overlay d-flex flex-column">
                                     <div class="card-body">
-                                        <small class="card-meta mb-2">View Our Collections Of</small>
-                                        <h4 class="card-title mt-0 ">
+                                        <h2 class="card-meta mb-2">View Our Collections Of</h2>
+                                        <h5 class="card-title mt-0 ">
                                             <!-- <a class="text-white" herf="#">Fittness Equipment</a> -->
                                             <a href="home.html"><?php echo $cat['category_name']?></a>
-                                        </h4>
+                                        </h5>
                                     </div>
                                 </div>
                             </div>
