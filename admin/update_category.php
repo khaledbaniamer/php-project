@@ -28,7 +28,7 @@ $single_category = select_one_category($connect , $id);
               <img src="image/image_category/<?php echo $single_category['category_image']?>" width=100px height="100px">
             </div>
             <div class="form-group mt-4">
-            <input type="submit" class="btn btn lg btn-outline-primary" value = "Add" name="submit">
+            <input type="submit" class="btn btn sm btn-primary" value = "Add" name="submit">
             </div>
 </form>
 

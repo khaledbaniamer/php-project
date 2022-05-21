@@ -1,29 +1,31 @@
 
-<?php include "include/header_admin.php"; ?>
 <link href="//netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 <script src="//netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
 <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
 <!------ Include the above in your HEAD tag ---------->
-
+<?php include "include/header_admin.php"; ?>
 <link rel="stylesheet" href="sidebar/css/style.css">
-
-<div class="nav-side-menu position-relative-start" >
+<div class="nav-side-menu">
     <div class="brand">Sport</div>
     <i class="fa fa-bars fa-2x toggle-btn" data-toggle="collapse" data-target="#menu-content"></i>
   
         <div class="menu-list">
   
             <ul id="menu-content" class="menu-content collapse out">
-                <li class="mt-4">
-                  <a href="index.php" class="fs-4 ">
+                <li>
+                  <a href="index.php?dashboard">
                     
-                  <i class="fa fa-dashboard fa-lg "></i> Dashboard
+                  <i class="fa fa-dashboard fa-lg"></i> Dashboard
                   </a>
                 </li>
                 
-    
+                <li>
+                  <a href="#">
+                  <i class="fa fa-user fa-lg"></i> Add Admin
+                  </a>
+                  </li>
 
-                <li  data-toggle="collapse" data-target="#products" class="collapsed fs-4 mt-4">
+                <li  data-toggle="collapse" data-target="#products" class="collapsed">
                   <a href="#"><i class="fa fa-gift fa-lg"></i>Categories <span class="arrow"></span></a>
                 </li>
                 <ul class="sub-menu collapse" id="products">
@@ -33,7 +35,7 @@
                 </ul>
 
 
-                <li data-toggle="collapse" data-target="#service" class="collapsed fs-4 mt-4">
+                <li data-toggle="collapse" data-target="#service" class="collapsed">
                   <a href="#"><i class="fa fa-globe fa-lg"></i> Prdoucts <span class="arrow"></span></a>
                 </li>  
                 <ul class="sub-menu collapse" id="service">
@@ -43,14 +45,14 @@
                 </ul>
 
 
-                <li data-toggle="collapse" data-target="#new" class="collapsed fs-4 mt-4">
-                  <a href="#"><i class="fa fa-user fa-lg"></i> Users <span class="arrow"></span></a>
+                <li data-toggle="collapse" data-target="#new" class="collapsed">
+                  <a href="#"><i class="fa fa-car fa-lg"></i> Users <span class="arrow"></span></a>
                 </li>
                 <ul class="sub-menu collapse" id="new">
                     <li ><a href="index.php?add_user">Add Users</a></li>
                     <li><a href="index.php?view_user">View Users</a></li>
                 </ul>
-                <li  data-toggle="collapse" data-target="#Copoun" class="fs-4 mt-4">
+                <li  data-toggle="collapse" data-target="#Copoun">
                   <a href="#"><i class="fa fa-gift fa-lg"></i>Copoun <span class="arrow"></span></a>
                 </li>
                 <ul class="sub-menu collapse" id="Copoun">
@@ -59,8 +61,8 @@
 
                 </ul>
 
-                <li  data-toggle="collapse" data-target="#admin" class="fs-4 mt-4">
-                  <a href="#"><i class="fa fa-user fa-lg"></i>Admin <span class="arrow"></span></a>
+                <li  data-toggle="collapse" data-target="#admin">
+                  <a href="#"><i class="fa fa-gift fa-lg"></i>Admin <span class="arrow"></span></a>
                 </li>
                 <ul class="sub-menu collapse" id="admin">
                     <li ><a href="index.php?add_admin">Add Admin</a></li>
@@ -70,9 +72,8 @@
 
             </ul>
      </div>
-
 </div>
-<div class="container  float-end">
+<div class="container float-end">
   <?php if(isset($_GET['view_category'])) include "viewCategory.php"; ?>
   <?php if(isset($_GET['update'])) include "update_category.php"; ?>
   <?php if(isset($_GET['add_category'])) include "addCategory.php"; ?>
@@ -93,6 +94,9 @@
   <?php if(isset($_GET['add_admin'])) include "createAdmin.php"; ?>
   <?php if(isset($_GET['view_admin'])) include "view_admin.php"; ?>
   <?php if(isset($_GET['updateadmin'])) include "update_admin.php"; ?>
+  
+  <?php if(isset($_GET['dashboard'])) include "dashboard.php"; ?>
+
 </div>
 
 <link href="//netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">

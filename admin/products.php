@@ -70,11 +70,11 @@ $products=$pdo->query($ana);
 
       <form action="index.php" method="get" style="display:inline-block;">
       <input type="hidden" value=<?php echo $product["product_id"] ?> name="upadteproduct">
-      <button type="submit" class="btn btn-sm btn-outline-secondary">edit</button>
+      <input type="submit" class="btn btn-secondary" value="Edit">
       </form>
       <form action="" method="post" style="display:inline-block;">
             <input type="hidden" value="<?php echo $product["product_id"] ?>" name="deleteproduct">
-            <input type="submit" name ="delete1" class="btn btn-sm btn btn-dange" value="delete">
+            <input type="submit" name ="delete1" class="btn btn-danger" value="Delete">
       </form>
 
       </td>

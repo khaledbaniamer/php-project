@@ -110,7 +110,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <input type="text" class="form-control" id="exampleFormControlInput1" name="phone" value="<?php echo $user['user_phone'] ?>">
   </div>
 
-        <button type="submit" class="btn btn-primary">Submit</button><br>
+        <button type="submit" class="btn btn sm btn-primary">Submit</button><br>
       </form>
     </div>
   </div>

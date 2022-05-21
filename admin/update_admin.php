@@ -41,7 +41,7 @@ $admin = view_one_admin($connect , $id)
 
             
             <div class="form-group">
-            <input type="submit" class="btn btn lg btn-outline-primary" value = "Add" name="submit">
+            <input type="submit" class="btn btn sm btn-primary" value = "Add" name="submit">
             </div>
 </form>
 

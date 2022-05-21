@@ -27,12 +27,12 @@ $all_categories = select_category($connect);
       <td>
         <form action="index.php?" method="get" style="display:inline-block;">
                 <input type="hidden"  value="<?php echo $all_categories[$i]["category_id"] ?>" name="update">
-                <button type="submit" class="btn btn-sm btn-outline-secondary">edit</button>
+                <button type="submit" class="btn btn-sm btn-secondary">Edit</button>
         </form>
 
         <form action="" method="post" style="display:inline-block;">
             <input type="hidden" value="<?php echo $all_categories[$i]["category_id"] ?>" name="delete">
-            <input type="submit" name = "delete1" class="btn btn-sm btn-outline-danger" value="delete">
+            <input type="submit" name = "delete1" class="btn btn-sm btn-danger" value="Delete">
       </form>
       </td>
     </tr>
