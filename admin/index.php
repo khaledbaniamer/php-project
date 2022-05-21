@@ -3,7 +3,7 @@
 <script src="//netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
 <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
 <!------ Include the above in your HEAD tag ---------->
-<?php include "include/header_admin.php"; ?>
+<?php include "include/headerA_admin.php"; ?>
 <link rel="stylesheet" href="sidebar/css/style.css">
 <div class="nav-side-menu">
     <div class="brand">Sport</div>
@@ -94,9 +94,8 @@
   <?php if(isset($_GET['add_admin'])) include "createAdmin.php"; ?>
   <?php if(isset($_GET['view_admin'])) include "view_admin.php"; ?>
   <?php if(isset($_GET['updateadmin'])) include "update_admin.php"; ?>
-  
-  <?php if(isset($_GET['dashboard'])) include "dashboard.php"; ?>
 
+  <?php if(isset($_GET['dashboard'])) include "dashboard.php"; ?>
 </div>
 
 <link href="//netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">

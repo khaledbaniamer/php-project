@@ -88,7 +88,7 @@ $cate = $pro->fetchALL(PDO::FETCH_ASSOC);
         <?php endforeach  ?>
         </select>
         </div>
-        <input type="submit" class="btn btn sm btn-primary" name="updateproduct" value="Update"><br>
+        <input type="submit" class="btn btn-primary" name="updateproduct" value="Update"><br>
       </form>
     </div>
   </div>

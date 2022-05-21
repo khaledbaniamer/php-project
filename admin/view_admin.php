@@ -6,10 +6,6 @@ $all_admins = view_all_admin($connect);
 
 
 ?> 
-      <div class="container" style="min-height: 700px;">
-      <h1> Admin Page </h1>
-
-      <br>
 <div >
   <table class="table">
   <thead>
@@ -31,12 +27,12 @@ $all_admins = view_all_admin($connect);
       <td>
         <form action="index.php" method="get" style="display:inline-block;">
                 <input type="hidden"  value="<?php echo $all_admins[$i]["admin_id"] ?>" name="updateadmin">
-                <button type="submit" class="btn btn btn-secondary">Edit</button>
+                <button type="submit" class="btn btn btn-outline-secondary">edit</button>
         </form>
 
         <form action="" method="post" style="display:inline-block;">
             <input type="hidden" value="<?php echo $all_admins[$i]["admin_id"] ?>" name="deleteadmin">
-            <input type="submit" name = "delete1" class="btn btn btn-danger" value="Delete">
+            <input type="submit" name = "delete1" class="btn btn btn-outline-danger" value="delete">
       </form>
       </td>
     </tr>

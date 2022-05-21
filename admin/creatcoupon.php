@@ -42,25 +42,25 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
   <body>
   
       
-  <div class="container" style="min-height: 700px;width:60% ">
-      <h1>Create Coupon</h1>
-
+  <div class="container" style="min-height: 700px;">
+      <h1>CREAT user</h1>
+      <h2><a href="coupons.php">back to coupons</a></h2>
       <br>
       <form method="post"  enctype='multipart/form-data'>
   <div class="form-group">
-    <label for="exampleFormControlInput1">Coupon Name</label>
-    <input type="text" class="form-control" id="exampleFormControlInput1" name="name" required >
+    <label for="exampleFormControlInput1">coupon name</label>
+    <input type="text" class="form-control" id="exampleFormControlInput1" name="name" required>
   </div>
   <div class="form-group">
-    <label for="exampleFormControlInput1">Coupon Amount</label>
-    <input type="number" step=".01" max = "1" class="form-control" id="exampleFormControlInput1" name="address"  required>
+    <label for="exampleFormControlInput1">coupon amount</label>
+    <input type="number" class="form-control" id="exampleFormControlInput1" name="address"  required>
   </div>
   <div class="form-group">
-    <label for="exampleFormControlInput1">Active</label>
+    <label for="exampleFormControlInput1">active</label>
     <input type="number"  class="form-control" id="exampleFormControlInput1" name="email" required>
   </div>
   <div class="form-group">
-  <button type="submit" class="btn btn-primary">Add</button>
+  <button type="submit" class="btn btn lg btn-outline-primary">add</button>
   </div>
 </form>
 

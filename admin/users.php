@@ -25,7 +25,7 @@ $users=$pdo->query($ana);
 
       <div class="container" style="min-height: 700px;">
       <h1> USERS PAGE </h1>
-
+      <a href="creatuser.php" class="btn btn btn-success">creat</a>
       <br>
 
       <table class="table table-striped">
@@ -61,12 +61,12 @@ $users=$pdo->query($ana);
       <td>
 
       <form action="index.php" method="get" style="display:inline-block;">
-        <input type="hidden" value=<?php echo $user["user_id"] ?> name="updateuser">
-        <button type="submit" class="btn btn-sm btn-secondary">Edit</button>
+      <input type="hidden" value=<?php echo $user["user_id"] ?> name="updateuser">
+      <button type="submit" class="btn btn-sm btn-outline-secondary">edit</button>
       </form>
       <form action="" method="post" style="display:inline-block;">
             <input type="hidden" value="<?php echo $user["user_id"] ?>" name="deleteuser">
-            <input type="submit" name ="delete1" class="btn btn-sm btn-danger" value="Delete">
+            <input type="submit" name ="delete1" class="btn btn-sm btn btn-dange" value="delete">
       </form>
 
       </td>

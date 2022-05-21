@@ -1,20 +1,28 @@
 <?php
 
+
+ 
+session_start();
+$sess= $_SESSION['user_id '] ?? 3;
+
+require "../connect2.php";
+
+ 
 include_once "../headFoot/header.php";
  
-// session_start();
-
-require "../connect2.php"
-
- 
-
- 
-
+// echo "<pre>";
+// print_r($arr_quantity);
+// print_r($arr_name);
+// print_r($arr_price);
+// echo "test";
+// echo "</pre>";
 ?>
 <?php
+
  
- $stmt = $conn->query("SELECT * FROM userstable WHERE user_id= 1");
+ $stmt = $conn->query("SELECT * FROM userstable WHERE user_id='$sess'");
 //  $stmt->execute();
+ 
  $users = $stmt->fetch(PDO::FETCH_ASSOC);
  
  // Send the user to the place order page if they click the Place Order button, also the cart should not be empty
@@ -39,25 +47,31 @@ if (isset($_POST['update']) && isset($_SESSION['cart'])) {
         }
     }
 }
+
+
+
+
+
 // Check the session variable for products in cart
 $products_in_cart = isset($_SESSION['cart']) ? $_SESSION['cart'] : array();
 $products = array();
 $subtotal = 0.00;
+// print_r($products_in_cart) ;
 // If there are products in cart
-if ($products_in_cart) {
-    // There are products in the cart so we need to select those products from the database
-    // Products in cart array to question mark string array, we need the SQL statement to include IN (?,?,?,...etc)
-    $array_to_question_marks = implode(',', array_fill(0, count($products_in_cart), '?'));
-    $stmt = $conn->query('SELECT * FROM products WHERE product_id IN (' . $array_to_question_marks . ')');
-    // We only need the array keys, not the values, the keys are the id's of the products
-    // $stmt->execute(array_keys($products_in_cart));
-    // Fetch the products from the database and return the result as an Array
-    $products = $stmt->fetch(PDO::FETCH_ASSOC);
-    // Calculate the subtotal
-    foreach ($products as $product) {
-        $subtotal += (float)$product['product_price'] * (int)$products_in_cart[$product['product_id']];
-    }
-}
+// if ($products_in_cart) {
+//     // There are products in the cart so we need to select those products from the database
+//     // Products in cart array to question mark string array, we need the SQL statement to include IN (?,?,?,...etc)
+//     $array_to_question_marks = implode(',', array_fill(0, count($products_in_cart), '?'));
+//     $stmt = $conn->query('SELECT * FROM products WHERE product_id IN (' . $array_to_question_marks . ')');
+//     // We only need the array keys, not the values, the keys are the id's of the products
+//     // $stmt->execute(array_keys($products_in_cart));
+//     // Fetch the products from the database and return the result as an Array
+//     $products = $stmt->fetch(PDO::FETCH_ASSOC);
+//     // Calculate the subtotal
+//     foreach ($products as $product) {
+//         $subtotal += (float)$product['product_price'] * (int)$products_in_cart[$product['product_id']];
+//     }
+//}
  ?>
  
 
@@ -128,44 +142,52 @@ if ($products_in_cart) {
             <table class="table table-condensed">
                 <thead>
                     <tr class="cart_menu">
+                        <td></td>
                         <td class="image">Item</td>
-                        <td class="description"></td>
                         <td class="price">Price</td>
                         <td class="quantity">Quantity</td>
                         <td class="total">Total</td>
-                        <td></td>
+
+                       
                     </tr>
                 </thead>
                 <tbody>
-                <?php foreach ($products as $product): ?>
+                <?php 
+                $stat = $conn->query("SELECT * FROM cart_temp");
+                $rows = $stat->fetchAll(PDO::FETCH_ASSOC);
+                $total=0;
+                foreach($rows as $row) :
+                    $total+=$row['quantity'] * $row['product_price'];
+                 ?>
+                 
+              
                     <tr>
                         <td class="cart_product">
-                            <a href=""><img src="fwy6zosqphc8hzjk0rgr.webp" alt=""></a>
+                            <a href=""><img src="fwy6zosqphc8hzjk0rgr.webp" alt=""><?php ?></a>
                         </td>
-                        <td class="cart_description">
-                            <h4><a href=""><?php echo $product['product_name']?></a></h4>
-                            <p>  ID: <?php echo $product['product_id']?></p>
+                        <td>
+
+                            <h4><a href=""><?php echo $row['product_name']?></a></h4>
                         </td>
                         <td class="cart_price">
-                            <p><?php echo $product['product_price']?></p>
+                            <p><?php echo $row['product_price']?></p>
                         </td>
                         <td class="cart_quantity">
                             <div class="cart_quantity_button">
                                  
-                        <input class="cart_quantity_input" type="text" name="quantity-<?=$product['product_id']?>" value="1" autocomplete="off" size="2">
+                        <input class="cart_quantity_input" type="text" name="quantity-" value="<?php echo $row['quantity'] ?>" autocomplete="off" size="2">
                                 
                             </div>
                            
                         </td>
                         <td class="cart_total">
-                            <p class="cart_total_price"> <?php echo $product['product_price']?></p>
-                        </td>
-                        <td class="cart_delete">
-                            <a class="cart_quantity_delete" href=""><i class="fa fa-times"></i></a>
+                            <p class="cart_total_price"> <?php echo $row['quantity'] * $row['product_price']?></p>
                         </td>
                     </tr>
 
-                    <?php endforeach; ?>
+                        <?php 
+                    endforeach; 
+                    ?>
 
                     
                     <tr>
@@ -174,7 +196,7 @@ if ($products_in_cart) {
                             <table class="table table-condensed total-result">
                                 <tr>
                                     <td>Cart Sub Total</td>
-                                    <td><?php $subtotal ?> </td>
+                                    <td><?=$total?> JOD </td>
                                 </tr>
                                  
                                 <tr class="shipping-cost">
@@ -183,7 +205,7 @@ if ($products_in_cart) {
                                 </tr>
                                 <tr>
                                     <td>Total</td>
-                                    <td><span><?php $subtotal ?> </span></td>
+                                    <td><span><?=$total?> JOD  </span></td>
                                 </tr>
                             </table>
                         </td>
@@ -192,15 +214,9 @@ if ($products_in_cart) {
                 </tbody>
             </table>
         </div>
-        <div class="payment-options">
-            <span>
-                <label><input type="checkbox">Cash On Delivery</label>
-            </span>
 
-        </div>
         </div>
 </section>
-
   
 </body>
 

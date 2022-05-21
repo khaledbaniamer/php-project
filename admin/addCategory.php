@@ -20,7 +20,7 @@ require "category_backend.php";
   <body>
   <div></div>
       
-  <div class="container mt-5" style="min-height: 700px; width:60%">
+  <div class="container mt-5" style="min-height: 700px; width:50%">
       <h1>Add New Category</h1>
      
       <br>
@@ -35,7 +35,7 @@ require "category_backend.php";
             </div>
             
             <div class="form-group">
-            <input type="submit" class="btn btn-primary" value = "Add" name="submit">
+            <input type="submit" class="btn btn lg btn-outline-primary" value = "Add" name="submit">
             </div>
 </form>
 

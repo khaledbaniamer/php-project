@@ -48,16 +48,17 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
   <body>
   
       
-  <div class="container" style="min-height: 700px; width:60%">
+  <div class="container" style="min-height: 700px;">
       <h1>CREAT user</h1>
+      <h2><a href="users.php">back to users</a></h2>
       <br>
       <form method="post"  enctype='multipart/form-data'>
   <div class="form-group">
-    <label for="exampleFormControlInput1">User Name</label>
+    <label for="exampleFormControlInput1">user name</label>
     <input type="text" class="form-control" id="exampleFormControlInput1" name="name">
   </div>
   <div class="form-group">
-    <label for="exampleFormControlInput1">Address</label>
+    <label for="exampleFormControlInput1">address</label>
     <input type="text" class="form-control" id="exampleFormControlInput1" name="address" >
   </div>
   <div class="form-group">
@@ -65,16 +66,16 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     <input type="text" class="form-control" id="exampleFormControlInput1" name="email">
   </div>
   <div class="form-group">
-    <label for="exampleFormControlInput1">Password</label>
+    <label for="exampleFormControlInput1">password</label>
     <input type="text" class="form-control" id="exampleFormControlInput1" name="pass">
   </div>
   <div class="form-group">
-    <label for="exampleFormControlInput1">Phone</label>
+    <label for="exampleFormControlInput1">phone</label>
     <input type="text" class="form-control" id="exampleFormControlInput1" name="phone">
   </div>
 
   <div class="form-group">
-  <button type="submit" class="btn btn-primary">Add</button>
+  <button type="submit" class="btn btn lg btn-outline-primary">add</button>
   </div>
 </form>
 
