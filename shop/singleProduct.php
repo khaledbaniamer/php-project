@@ -50,7 +50,7 @@ if (isset($_GET['id'])) {
     <!-- Left Column /   Image -->
     <div class="left-column">
 
-      <img src="../fwy6zosqphc8hzjk0rgr.webp" width="500" height="500" alt="<?= $product['product_name'] ?>">
+      <img src="<?= $product['product_image']?>" width="500" height="500" alt="<?= $product['product_name'] ?>">
     </div>
 
 
@@ -96,12 +96,11 @@ if (isset($_GET['id'])) {
       </div>
 
       <?php 
-        $count=0;
+
         if(isset($_POST['add_cart'])){
 
           if(!empty($_POST['quantity'])){
-            $count++;
-          $_SESSION['count'] =  $count;
+          
             // $_SESSION ['quantity'] .= $_POST['quantity']."<br>";
             // $_SESSION ['product_name'] .= $product['product_name']."<br>";
             // $_SESSION ['product_price'] .= $product['product_price']."<br>";

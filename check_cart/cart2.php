@@ -135,7 +135,7 @@ exit;}
         <h1 class="projTitle">This is <span>Your</span> Shopping Cart</h1>
         <div class="heading cf">
             <h1>My Cart</h1>
-            <a href="../shop.php" class="continue">Continue Shopping</a>
+            <a href="../shop/shop.php" class="continue">Continue Shopping</a>
         </div>
         <div class="infoWrap">
             <div class="cartSection">
@@ -184,14 +184,14 @@ exit;}
                             <td class="price"><?=  $row['product_price'] ?></td>
                             <td class="quantity">
                             <form  method="post">
-                                    <input type="number" name="prd_quantity" value="<?= $row['quantity'] ?>" min="1" placeholder="Quantity" style="width:30%" required>
-                                
+                                    <input type="number" name="prd_quantity" value="<?= $row['quantity'] ?>" min="1" placeholder="Quantity" required>
+
                             </td>
                             <td class="price"><?= $row['quantity'] * $row['product_price']?> JOD </td>
                             <td> 
                                 <a href="cart2.php?delete_product=<?= $row['product_id'] ?>" class="remove">X</a>
                                 <input type="hidden" value="<?= $row['product_id'] ?>" name="update_product" >
-                                <input type="submit" name="Update" value="Update" class="btn btn-primary mx-2"  style="background-color :#ef7828">
+                                <input type="submit" name="Update" value="Update" class="btn btn-primary mx-2"  >
                             </form>
                             </td>
                         </tr>
@@ -210,14 +210,14 @@ exit;}
                                             $stat = $conn->query("SELECT * FROM discount WHERE discount_name = '$coupon_input'");
                                             $row = $stat->fetch(PDO::FETCH_ASSOC);
                                             if($row){
-                                                
+
                                                 $total =$total - ($total* $row['discount_amount']);
-                                                
+
                                             }else{
                                                 echo "<script>alert('This Coupon Does Not Exist')</script>";
                                             }
                                         }
-                                
+
                                 ?>
                                 <td class="total">
                                         <label style="color:#ef7828 ; font-weight:700"><?php if(isset($total)){echo $total;}else{echo 0;}?> JOD</label>
@@ -253,8 +253,6 @@ exit;}
             $sql = "UPDATE cart_temp SET quantity='$updateQty' WHERE product_id = '$update_prd'";
             $stat=$conn->query($sql);
         }
-
-
     ?>
 
 </body>

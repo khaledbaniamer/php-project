@@ -3,7 +3,6 @@
  
 require 'connect2.php';
 
-
 ?>
 <?php
  
@@ -107,7 +106,7 @@ $cats = $stmt->fetchAll(PDO::FETCH_ASSOC);
                         <a href="#about">
                             <button id="aboutus" class="btn">More About Us</button>
                         </a>
-                        <a href="products.html">
+                        <a href="../php_Mysql_project/shop/shop.php">
                             <button id="shop" class="btn">Shop Now</button>
                         </a>
                     </div>
@@ -121,14 +120,15 @@ $cats = $stmt->fetchAll(PDO::FETCH_ASSOC);
                     <div class="row">
                     <?php foreach ($cats as $cat):?>
                         <div class="col-md-4">
-                            <div class="card text-white card-has-bg click-col" style="background-image:url('admin/image/image_category/<?php echo $cat['category_image']?>'); background-size:cover">
+                            <div class="card text-white card-has-bg click-col" style="background-image:url('<?= $cat['category_image']?>');">
+                            <!-- <img class="card-img d-none" src="<?= $cat['category_image']?>" alt="Goverment Lorem Ipsum Sit Amet Consectetur dipisi?"> -->
                                 <div class="card-img-overlay d-flex flex-column">
                                     <div class="card-body">
-                                        <h2 class="card-meta mb-2">View Our Collections Of</h2>
-                                        <h5 class="card-title mt-0 ">
+                                        <small class="card-meta mb-2">View Our Collections Of</small>
+                                        <h4 class="card-title mt-0 ">
                                             <!-- <a class="text-white" herf="#">Fittness Equipment</a> -->
                                             <a href="home.html"><?php echo $cat['category_name']?></a>
-                                        </h5>
+                                        </h4>
                                     </div>
                                 </div>
                             </div>
@@ -181,7 +181,7 @@ $cats = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
                     </div>
                     <div class="slide">
-                        <img src="/media/pexels-evg-kowalievska-1040425.jpg" width="100%" height="100%" >
+                        <img src="media/pexels-evg-kowalievska-1040425.jpg" width="100%" height="100%" >
 
                     </div>
                    

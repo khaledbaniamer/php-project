@@ -2,6 +2,7 @@
 include_once "../headFoot/header.php";
  
 require '../connect2.php';
+ 
 
 
 ?>
@@ -74,7 +75,7 @@ $products = $stmt->fetchAll(PDO::FETCH_ASSOC);
 							</div>
 							<div class="panel panel-default">
 								<div class="panel-heading">
-									<h4 class="panel-title"><a href="cat3.php">Fitness Clothing</a></h4>
+									<h4 class="panel-title"><a href="">Fitness Clothing</a></h4>
 								</div>
 							</div>
 							<div class="panel panel-default">
@@ -108,7 +109,7 @@ $products = $stmt->fetchAll(PDO::FETCH_ASSOC);
 				</div>
 
 				<div class="col-sm-9 padding-right">
-					<div class="features_items">
+					<div class="features_items mt-5">
 						<!--features_items-->
 						<h2 class="title text-center">Featured Items</h2>
 
@@ -118,7 +119,7 @@ $products = $stmt->fetchAll(PDO::FETCH_ASSOC);
 								<div class="single-products">
 									<div class="productinfo text-center">
 									
-										<img src="../media/fwy6zosqphc8hzjk0rgr.webp" alt="" />
+										<img src="<?=$product['product_image']?>" alt="" />
 										
 										<h2><?php echo $product['product_price']?></h2>
 										<p><?php echo $product['product_name']?></p>
