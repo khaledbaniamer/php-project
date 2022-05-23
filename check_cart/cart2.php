@@ -105,7 +105,7 @@ exit;}
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
 
     <!-- Bootstrap CSS -->
@@ -166,9 +166,12 @@ exit;}
                         <tbody class="cartWrap">
                             
                     <?php
-                    $total=0; 
+                    // update 23/5/2022
+                    $total_coupon=0; 
+                    $total = 0;        
                     foreach($rows as $row) : 
-                       $total += $row['quantity'] * $row['product_price'];
+                       $total_coupon += $row['quantity'] * $row['product_price'];
+                       $total = $total_coupon;  
                         ?>
                         <tr>
                             <td class="img" scope="row">
@@ -204,25 +207,51 @@ exit;}
                                 <td><input type="submit" name="check" value="check" class="btn btn-primary" style="background-color :#ef7828 ;"></td>
                             </form>
                                 <td>Total Cost order</td>
+                                
                                 <?php 
                                         if(isset($_POST['check'])){
                                             $coupon_input = $_POST['coupon'];
                                             $stat = $conn->query("SELECT * FROM discount WHERE discount_name = '$coupon_input'");
                                             $row = $stat->fetch(PDO::FETCH_ASSOC);
                                             if($row){
-
-                                                $total =$total - ($total* $row['discount_amount']);
+                                                  
+                                                $total_coupon =$total - ($total* $row['discount_amount']);
+                                                
+                                                echo "<script>
+                                                    Swal.fire({
+                                                    position: 'top-end',
+                                                    icon: 'success',
+                                                    title: 'Your work has been saved',
+                                                    showConfirmButton: false,
+                                                    timer: 1500
+                                                  })
+                                                </script>";
 
                                             }else{
-                                                echo "<script>alert('This Coupon Does Not Exist')</script>";
+                                                echo "<script>Swal.fire({
+                                                    icon: 'error',
+                                                    text: 'The Coupon Does Not Exist!'
+                                                   
+                                                  })</script>";
                                             }
                                         }
 
                                 ?>
                                 <td class="total">
-                                        <label style="color:#ef7828 ; font-weight:700"><?php if(isset($total)){echo $total;}else{echo 0;}?> JOD</label>
+                                        <label style="color:#ef7828 ; font-weight:700"><?php if(isset($total)){echo $total; $_SESSION['total'] = $total;}else{echo 0;}?> JOD</label>
                                 </td>
                         </tr>
+                        <tr >
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td >Total  After Coupon</td>
+                            <td>
+                            <label style="color:#ef7828 ; font-weight:700"><?php if(isset($total_coupon)){echo $total_coupon;$_SESSION['total_coupon'] = $total_coupon;}else{echo 0;}?> JOD</label>
+
+                            </td>
+                        </tr>
+                        <!-- end update -->
                     </tbody>
 
                     </table>
@@ -254,6 +283,7 @@ exit;}
             $stat=$conn->query($sql);
         }
     ?>
+
 
 </body>
 

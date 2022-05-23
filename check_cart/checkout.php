@@ -146,7 +146,7 @@ $subtotal = 0.00;
                         <td class="image">Item</td>
                         <td class="price">Price</td>
                         <td class="quantity">Quantity</td>
-                        <td class="total">Total</td>
+                        <td class="total">Total JOD</td>
 
                        
                     </tr>
@@ -203,10 +203,25 @@ $subtotal = 0.00;
                                     <td>Shipping Cost</td>
                                     <td>Free</td>
                                 </tr>
+
+                                <!-- update 23/5/2022 -->
+
+                                <tr class="shipping-cost">
+                                    <td>After Coupon</td>
+                                    <td><?php echo $_SESSION['total_coupon']?></td>
+                                </tr>
                                 <tr>
                                     <td>Total</td>
-                                    <td><span><?=$total?> JOD  </span></td>
+                                    <td><span><?php
+                                    if($_SESSION['total_coupon'] == $total){
+                                        echo $total;
+                                    }else{
+                                        echo $_SESSION['total_coupon']; 
+                                    }
+                                    ?> JOD  </span></td>
                                 </tr>
+
+                                <!-- End  update-->
                             </table>
                         </td>
                     </tr>
