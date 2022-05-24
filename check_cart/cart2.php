@@ -172,36 +172,36 @@ if (isset($_POST['placeorder']) && isset($_SESSION['cart']) && !empty($_SESSION[
                         ?>
                             <tbody class="cartWrap">
 
-                                <!-- // update 23/5/2022 -->
-                                <?php
-                                $total_coupon = 0;
-                                $total = 0;
-                                foreach ($rows as $row) :
-                                    $total_coupon += $row['quantity'] * $row['product_price'];
-                                    $total = $total_coupon;
-                                ?>
-                                    <tr>
-                                        <td class="img" scope="row">
+                    <!-- // update 23/5/2022 -->
+                    <?php
+                    $total_coupon = 0;
+                    $total = 0;
+                    foreach ($rows as $row) :
+                        $total_coupon += $row['quantity'] * $row['product_price'];
+                        $total = $total_coupon;
+                    ?>
+                        <tr>
+                            <td class="img" scope="row">
 
-                                            <img src="../fwy6zosqphc8hzjk0rgr.webp" width="50" height="50" alt="<?= $product['product_name'] ?>">
-                                            </a>
-                                        </td>
-                                        <td>
-                                            <a href="cart2.php?page=product&id="><?= $row['product_name'] ?></a>
-                                            <br>
+                                <img src="../fwy6zosqphc8hzjk0rgr.webp" width="50" height="50" alt="<?= $product['product_name'] ?>">
+                                </a>
+                            </td>
+                            <td>
+                                <a href="cart2.php?page=product&id="><?= $row['product_name'] ?></a>
+                                <br>
 
-                                        </td>
-                                        <td class="price"><?= $row['product_price'] ?></td>
-                                        <td class="quantity">
-                                            <form method="post">
-                                                <input type="number" name="prd_quantity" value="<?= $row['quantity'] ?>" min="1" placeholder="Quantity" required>
+                            </td>
+                            <td class="price"><?= $row['product_price'] ?></td>
+                            <td class="quantity">
+                                <form method="post">
+                                    <input type="number" name="prd_quantity" value="<?= $row['quantity'] ?>" min="1" placeholder="Quantity" required>
 
-                                        </td>
-                                        <td class="price"><?= $row['quantity'] * $row['product_price'] ?> JOD </td>
-                                        <td>
-                                            <a href="cart2.php?delete_product=<?= $row['product_id'] ?>" class="remove">X</a>
-                                            <input type="hidden" value="<?= $row['product_id'] ?>" name="update_product">
-                                            <input type="submit" name="Update" value="Update" class="btn btn-primary mx-2">
+                            </td>
+                            <td class="price"><?= $row['quantity'] * $row['product_price'] ?> JOD </td>
+                            <td>
+                                <a href="cart2.php?delete_product=<?= $row['product_id'] ?>" class="remove" style="background-color :red ;">X</a>
+                                <input type="hidden" value="<?= $row['product_id'] ?>" name="update_product">
+                                <input type="submit" name="Update" value="Update" class="btn btn-secondary mx-2" style="background-color :#ef7828 ;" >
                 </form>
                 </td>
                 </tr>
@@ -211,8 +211,9 @@ if (isset($_POST['placeorder']) && isset($_SESSION['cart']) && !empty($_SESSION[
             <form method="post">
                 <td>Coupon</td>
                 <td><input type="text" name="coupon" style=" width:60% "></td>
-                <td><input type="submit" name="check" value="check" class="btn btn-primary" style="background-color :#ef7828 ;"></td>
+                <td><input type="submit" name="check" value="check" class="btn btn-secondary" style="background-color :#ef7828 ;"></td>
             </form>
+
             <td>Total Cost order</td>
 
             <?php
