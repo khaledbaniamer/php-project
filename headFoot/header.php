@@ -133,6 +133,7 @@
 
 								if (isset($userId) && $userId != 0) {
 									echo "<li><a href='../registration/logout.php'><i class='fa fa-lock'></i>logout</a></li>";
+									echo "<li><a href='../user/profile.php'><i class='fa fa-user'></i>profile</a></li>";
 
 								} else {
 									echo "<li><a href='../registration/login.php'><i class='fa fa-lock'></i> Login</a></li>";
