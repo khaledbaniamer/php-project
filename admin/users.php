@@ -61,8 +61,8 @@ $users=$pdo->query($ana);
       <td>
 
       <form action="index.php" method="get" style="display:inline-block;">
-        <input type="hidden" value=<?php echo $user["user_id"] ?> name="updateuser">
-        <button type="submit" class="btn btn-sm btn-outline-secondary">edit</button>
+      <input type="hidden" value=<?php echo $user["user_id"] ?> name="updateuser">
+      <button type="submit" class="btn btn-sm btn-outline-secondary">edit</button>
       </form>
       <form action="" method="post" style="display:inline-block;">
             <input type="hidden" value="<?php echo $user["user_id"] ?>" name="deleteuser">
