@@ -88,7 +88,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 $result->execute([':user_email' => $email]);
                 if ($result) {
 
-                    $login = "SELECT user_id  FROM `userstable` where user_email='$email' and user_password='$password'";
+                    $login = "SELECT user_id ,user_name FROM `userstable` where user_email='$email' and user_password='$password'";
                     $result = $connect->query($login);
                     $user = $result->fetch();
 

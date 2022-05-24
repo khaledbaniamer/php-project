@@ -318,11 +318,22 @@ if (isset($_POST['placeorder']) && isset($_SESSION['cart']) && !empty($_SESSION[
     if (isset($_POST['Update'])) {
         $updateQty = $_POST['prd_quantity'];
         $update_prd = $_POST['update_product'];
-        echo $update_prd;
-        echo $updateQty;
+
         $sql = "UPDATE cart_temp SET quantity='$updateQty' WHERE product_id = '$update_prd'";
         $stat = $conn->query($sql);
+        
+        echo "<script>
+        Swal.fire({
+            position: 'top-end',
+            icon: 'success',
+            title: 'Quantity has been updated',
+            showConfirmButton: false,
+            timer: 1500
+        })
+        </script>";
+        
     }
+       
     ?>
 
 </body>

@@ -1,9 +1,11 @@
 <?php
 session_start();
-require "../connect2.php";
+require_once "../connect2.php";
 include_once "../headFoot/header.php";
 
 $id_user = $_SESSION['user_id '] ?? 0;
+
+
 ?>
 <?php
 // Check to make sure the id parameter is specified in the URL
@@ -50,7 +52,7 @@ if (isset($_GET['id'])) {
     <!-- Left Column /   Image -->
     <div class="left-column">
 
-      <img src="<?= $product['product_image'] ?>" width="500" height="500" alt="<?= $product['product_name'] ?>">
+      <img src="<?= $product['product_image'] ?>" width="500" height="400" alt="<?= $product['product_name'] ?>">
     </div>
 
 
@@ -87,7 +89,7 @@ if (isset($_GET['id'])) {
         <form action="" method="post">
           <input type="number" name="quantity" min="1" value="1" placeholder="Quantity" required>
           <input type="hidden" name="product_id" value="<?= $product['product_id'] ?>">
-          <input type="submit" value="Add To Cart" name="add_cart" class="cart-btn" style="display: block; margin:20px;">
+          <input type="submit" value="Add To Cart" name="add_cart" class="cart-btn" style="display: block; margin-top:20px;">
 
         </form>
 
@@ -169,18 +171,18 @@ if (isset($_GET['id'])) {
 
           <form action="" method="post">
 
-            <div class="coment-bottom bg-white p-2 px-4">
+            <div class="coment-bottom bg-white p-2 px-4 mt-5">
               <div class="d-flex flex-row add-comment-section mt-4 mb-4">
 
                 <input type="text" name="comment" class="form-control mr-3" placeholder="Add comment">
 
-                <button class="btn btn-primary" type="submit" value="comment">Comment</button>
+                <button class="btn btn-secondary" type="submit" value="comment">Comment</button>
               </div>
 
+              
               <input type="hidden" name="id_comment" value="<?php echo $pr_id; ?>">
 
               <input type="hidden" name="name_comment" value="<?php echo $_SESSION['user_name ']; ?>">
-
           </form>
 
 
@@ -195,11 +197,8 @@ if (isset($_GET['id'])) {
                 <h5 class="mr-2"><?php echo $r['name'];  ?></h5><span class="dot mb-1">
               </div>
               <div class="comment-text-sm"><span> <?php echo $r['comment']; ?></span></div>
-              <div class="reply-section">
-                <div class="d-flex flex-row align-items-center voting-icons">
-                  <hr class="hr">
-                </div>
-              </div>
+              <hr>
+
             </div>
 
           <?php } ?>
