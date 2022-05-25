@@ -153,7 +153,7 @@ $cats = $stmt->fetchAll(PDO::FETCH_ASSOC);
           <?php foreach ($cats as $cat) : ?>
             <div class="col-md-4">
               <div class="card text-white card-has-bg click-col" style="background-image:url('admin/image/image_category/<?= $cat['category_image'] ?>');">
-                <!-- <img class="card-img d-none" src="<?= $cat['category_image'] ?>" alt="Goverment Lorem Ipsum Sit Amet Consectetur dipisi?"> -->
+
                 <div class="card-img-overlay d-flex flex-column">
                   <div class="card-body">
                     <small class="card-meta mb-2">View Our Collections Of</small>

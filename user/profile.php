@@ -2,7 +2,7 @@
     session_start();
     require 'user_backend.php';
     
-    $test_user = select_user($conn , $_SESSION['user_id '] );
+    $test_user = select_user($conn , $_SESSION['user_id ']??0);
   
     
     // echo "<pre>";

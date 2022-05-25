@@ -157,7 +157,7 @@ if (isset($_POST['placeorder']) && isset($_SESSION['cart']) && !empty($_SESSION[
 
 
                         //update2022--add "WHERE customer_id='$user_id'"-----------------------------
-                        $user_id =  $_SESSION['user_id '];
+                        $user_id =  $_SESSION['user_id ']??0;
                         $stat = $conn->query("SELECT * FROM cart_temp WHERE customer_id='$user_id'  ");
                         //update2022-------------------------------------------------------------------
 

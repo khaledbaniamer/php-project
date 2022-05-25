@@ -52,7 +52,7 @@ if (isset($_GET['id'])) {
     <!-- Left Column /   Image -->
     <div class="left-column">
 
-      <img src="<?= $product['product_image'] ?>" width="500" height="400" alt="<?= $product['product_name'] ?>">
+      <img src="../admin/image/product_image/<?= $product['product_image'] ?>" width="500" height="400" alt="<?= $product['product_name'] ?>">
     </div>
 
 
@@ -104,7 +104,7 @@ if (isset($_GET['id'])) {
       if (!empty($_POST['quantity'])) {
 
         $id_prd = $_GET['id'];
-        $id = $_SESSION['user_id '];
+        $id = $_SESSION['user_id ']??0;
         $check = $conn->query("SELECT * FROM cart_temp WHERE product_id = '$id_prd' and customer_id = ' $id' ");
         $row = $check->fetchAll(PDO::FETCH_ASSOC);
         if ($row) {
