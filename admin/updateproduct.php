@@ -121,7 +121,7 @@ $cate = $pro->fetchALL(PDO::FETCH_ASSOC);
 
 
         $statement->execute();
-        header("Location:index.php?upadteproduct=$id.php");
+      
     }
 
 }

@@ -27,12 +27,12 @@ $all_admins = view_all_admin($connect);
       <td>
         <form action="index.php" method="get" style="display:inline-block;">
                 <input type="hidden"  value="<?php echo $all_admins[$i]["admin_id"] ?>" name="updateadmin">
-                <button type="submit" class="btn btn btn-outline-secondary">edit</button>
+                <button type="submit" class="btn btn btn-secondary">Edit</button>
         </form>
 
         <form action="" method="post" style="display:inline-block;">
             <input type="hidden" value="<?php echo $all_admins[$i]["admin_id"] ?>" name="deleteadmin">
-            <input type="submit" name = "delete1" class="btn btn btn-outline-danger" value="delete">
+            <input type="submit" name = "delete1" class="btn btn btn-danger" value="Delete">
       </form>
       </td>
     </tr>

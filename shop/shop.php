@@ -122,7 +122,7 @@ $products = $stmt->fetchAll(PDO::FETCH_ASSOC);
 									<div class="single-products">
 										<div class="productinfo text-center">
 
-										<img src="<?= $product['product_image'] ?>" alt="" />
+										<img src="../admin/image/product_image/<?=$product['product_image'] ?>" alt="" />
 											<p><?php echo $product['product_name'] ?></p>
 
 											<h2><?php echo $product['product_price'] ?></h2>

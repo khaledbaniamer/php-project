@@ -35,7 +35,7 @@ require "category_backend.php";
             </div>
             
             <div class="form-group">
-            <input type="submit" class="btn btn lg btn-outline-primary" value = "Add" name="submit">
+            <input type="submit" class="btn btn lg btn-primary" value = "Add" name="submit">
             </div>
 </form>
 
@@ -46,10 +46,6 @@ if(isset($_POST['submit'])){
   move_uploaded_file($_FILES["category_image"]["tmp_name"],"image/image_category" . $_FILES["category_image"]["name"]);
   $category_image = $_FILES["category_image"]["name"];
   $category_name = $_POST["category_name"];
-
-  echo $category_image;
-  echo $category_name;
-
   add_category($connect ,$category_name ,$category_image);
 }
 }

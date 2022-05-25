@@ -25,18 +25,17 @@ $users=$pdo->query($ana);
 
       <div class="container" style="min-height: 700px;">
       <h1> USERS PAGE </h1>
-      <a href="creatuser.php" class="btn btn btn-success">creat</a>
       <br>
 
       <table class="table table-striped">
   <thead>
     <tr>
-      <th scope="col">id</th>
-      <th scope="col">user name</th>
-      <th scope="col"> address</th>
+      <th scope="col">Id</th>
+      <th scope="col">User Name</th>
+      <th scope="col"> Address</th>
       <th scope="col">E-mail</th>
-      <th scope="col"> password</th>
-      <th scope="col">phone </th>
+      <th scope="col"> Password</th>
+      <th scope="col">Phone </th>
       <th scope="col">Action</th>
 
     </tr>
@@ -62,11 +61,11 @@ $users=$pdo->query($ana);
 
       <form action="index.php" method="get" style="display:inline-block;">
       <input type="hidden" value=<?php echo $user["user_id"] ?> name="updateuser">
-      <button type="submit" class="btn btn-sm btn-outline-secondary">edit</button>
+      <button type="submit" class="btn btn-sm btn-secondary">edit</button>
       </form>
       <form action="" method="post" style="display:inline-block;">
             <input type="hidden" value="<?php echo $user["user_id"] ?>" name="deleteuser">
-            <input type="submit" name ="delete1" class="btn btn-sm btn btn-dange" value="delete">
+            <input type="submit" name ="delete1" class="btn btn-sm btn btn-danger" value="delete">
       </form>
 
       </td>
@@ -81,7 +80,6 @@ $users=$pdo->query($ana);
 if(isset($_POST['delete1'])){
 
 $id = $_POST['deleteuser'];
-echo $id;
 $sqlDelete = "DELETE FROM userstable WHERE user_id = '$id'";
 $pdo->exec($sqlDelete);
 

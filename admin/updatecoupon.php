@@ -50,7 +50,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 
         $statement->execute();
-        header('Location: coupons.php');
+
     }
 
 }
@@ -75,19 +75,18 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 
 
-  <div class="continer" style="min-height: 700px;">
-    <a href="users.php">Back to users</a>
+  <div class="continer" style="min-height: 700px; width:60%">
     <h2>Edit Coupon:</h2>
 
 
     <div class="container">
       <form method="post" enctype="multipart/form-data">
       <div class="form-group">
-    <label for="exampleFormControlInput1">coupon name</label>
+    <label for="exampleFormControlInput1">Coupon Name</label>
     <input type="text" class="form-control" id="exampleFormControlInput1" name="name" value="<?php echo $name ?>">
   </div>
   <div class="form-group">
-    <label for="exampleFormControlInput1">coupon Amount</label>
+    <label for="exampleFormControlInput1">Coupon Amount</label>
     <input type="text" class="form-control" id="exampleFormControlInput1" name="address" value="<?php echo $address ?>" >
   </div>
   <div class="form-group">
@@ -95,7 +94,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <input type="text" class="form-control" id="exampleFormControlInput1" name="email" value="<?php echo $email ?>">
   </div>
 
-        <button type="submit" class="btn btn-primary">Submit</button><br>
+        <button type="submit" class="btn btn-primary">Update</button><br>
       </form>
     </div>
   </div>
