@@ -199,7 +199,7 @@ if (isset($_POST['placeorder']) && isset($_SESSION['cart']) && !empty($_SESSION[
                             </td>
                             <td class="price"><?= $row['quantity'] * $row['product_price'] ?> JOD </td>
                             <td>
-                                <a href="cart2.php?delete_product=<?= $row['product_id'] ?>" class="remove" style="background-color :red ;">X</a>
+                                <a href="cart2.php?delete_product=<?= $row['product_id'] ?>" class="btn btn-danger p-1">Delete</a>
                                 <input type="hidden" value="<?= $row['product_id'] ?>" name="update_product">
                                 <input type="submit" name="Update" value="Update" class="btn btn-secondary mx-2" style="background-color :#ef7828 ;" >
                 </form>
@@ -315,6 +315,8 @@ if (isset($_POST['placeorder']) && isset($_SESSION['cart']) && !empty($_SESSION[
     if (isset($_GET['delete_product'])) {
         $delete_prd = $_GET['delete_product'];
         $stat = $conn->query("DELETE FROM `cart_temp` WHERE product_id='$delete_prd'");
+
+    echo "<script>window.location.href = 'http://localhost/php_mysql_project/check_cart/cart2.php'</script>";
     }
     if (isset($_POST['Update'])) {
         $updateQty = $_POST['prd_quantity'];
@@ -322,17 +324,9 @@ if (isset($_POST['placeorder']) && isset($_SESSION['cart']) && !empty($_SESSION[
 
         $sql = "UPDATE cart_temp SET quantity='$updateQty' WHERE product_id = '$update_prd'";
         $stat = $conn->query($sql);
-        
-        echo "<script>
-        Swal.fire({
-            position: 'top-end',
-            icon: 'success',
-            title: 'Quantity has been updated',
-            showConfirmButton: false,
-            timer: 1500
-        })
-        </script>";
-        
+
+        echo "<script>window.location.href = 'http://localhost/php_mysql_project/check_cart/cart2.php'</script>";
+
     }
        
     ?>

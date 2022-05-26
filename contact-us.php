@@ -117,6 +117,25 @@ include_once "../php_Mysql_project/headFoot/header.php";
 </html>
 <?php 
 
+	$dbname='sport_goods';
+	$host='localhost';
+	$username='root';
+	$pass='';
+
+	$conn = new PDO("mysql:host=$host;dbname=$dbname", $username, $pass);
+
+if(isset($_POST['submit'])){
+	$name = $_POST['name'];
+	$email = $_POST['email'];
+	$subject = $_POST['subject'];
+	$message_body = $_POST['message'];
+
+	$sql = "INSERT INTO message (message_name , message_email , message_subject , message_body) 
+	
+			VALUES ('$name' , '$email' , '$subject' , '$message_body')";
+	$conn->exec($sql);		
+}
+
 include_once "../php_Mysql_project/headFoot/footer.php";
 
 ?>

@@ -1,4 +1,4 @@
-
+<?php //session_start();?>
 <!doctype html>
 <html lang="en">
 
@@ -127,7 +127,7 @@
 								<li><a href="http://localhost/php_mysql_project/check_cart/cart2.php"><i class="fa fa-shopping-cart"></i> Cart</a></li>
 								<?php
 								//add check if user loged in or not
-								include "../connect2.php";
+								
 								// session_start();
 								$userId=$_SESSION['user_id ']?? 0;
 

@@ -1,5 +1,5 @@
 <?php
-
+session_start();
 include_once "../headFoot/header.php";
 
 require '../connect2.php';
@@ -46,11 +46,7 @@ $products = $stmt->fetchAll(PDO::FETCH_ASSOC);
 </head>
 
 <body>
-	<section id="advertisement">
-		<div class="container">
-			<img src="images/shop/advertisement.jpg" alt="" />
-		</div>
-	</section>
+
 	<section>
 		<div class="container">
 			<div class="row">

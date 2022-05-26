@@ -102,9 +102,8 @@
     $user_phone = $_POST['user_phone'];
 
     update_user($conn , $user_name ,$user_address ,$user_email ,$user_password ,$user_phone ,$_SESSION['user_id ']);
-    echo '<script type="text/javascript">
-       window.onload = function () { alert("Update Done"); } 
-    </script>'; 
+    echo "<script>window.location.href = 'http://localhost/php_mysql_project/user/profile.php'</script>";
+
     
 }
 

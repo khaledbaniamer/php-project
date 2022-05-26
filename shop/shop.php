@@ -49,11 +49,7 @@ $products = $stmt->fetchAll(PDO::FETCH_ASSOC);
 </head>
 
 <body>
-	<section id="advertisement">
-		<div class="container">
-			<img src="images/shop/advertisement.jpg" alt="" />
-		</div>
-	</section>
+
 
 
 
