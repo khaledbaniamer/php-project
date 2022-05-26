@@ -103,40 +103,40 @@ $products = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 					</div>
 				</div>
-				<div class="col-sm-9 padding-right">
-					<div class="features_items">
-						<!--features_items-->
-						<h2 class="title text-center">Fitness Equipment</h2>
+<div class="col-sm-9 padding-right">
+	<div class="features_items">
+		<!--features_items-->
+		<h2 class="title text-center">Fitness Equipment</h2>
 
-						<?php foreach ($products as $product) : ?>
-							<div class="col-sm-4">
-								<div class="product-image-wrapper">
-									<div class="single-products">
-										<div class="productinfo text-center">
+		<?php foreach ($products as $product) : ?>
+			<div class="col-sm-4">
+				<div class="product-image-wrapper">
+					<div class="single-products">
+						<div class="productinfo text-center">
 
-											<img src="../admin/image/product_image/<?=$product['product_image'] ?>" />
+							<img src="../admin/image/product_image/<?=$product['product_image'] ?>" />
 
-											<h2><?php echo $product['product_price'] ?></h2>
-											<p><?php echo $product['product_name'] ?></p>
+							<h2><?php echo $product['product_price'] ?></h2>
+							<p><?php echo $product['product_name'] ?></p>
 
-										</div>
-										<div class="product-overlay">
+						</div>
+						<div class="product-overlay">
 
-											<div class='overlay-content'>
+							<div class='overlay-content'>
 
-												<h2><?php echo $product['product_price'] ?></h2>
-												<p><?php echo $product['product_name'] ?></p>
-												<a href="singleProduct.php?id=<?php echo $product['product_id'] ?>" class='btn btn-default add-to-cart'>VIEW </a>
+								<h2><?php echo $product['product_price'] ?></h2>
+								<p><?php echo $product['product_name'] ?></p>
+								<a href="singleProduct.php?id=<?php echo $product['product_id'] ?>" class='btn btn-default add-to-cart'>VIEW </a>
 
-											</div>
-
-										</div>
-
-									</div>
-
-								</div>
 							</div>
-						<?php endforeach ?>
+
+						</div>
+
+					</div>
+
+				</div>
+			</div>
+		<?php endforeach ?>
 
 
 
