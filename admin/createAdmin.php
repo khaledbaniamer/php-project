@@ -51,6 +51,16 @@ require "category_backend.php";
            $password = $_POST['admin_password'];
 
            add_admin($connect , $name , $email ,$password);
+
+           echo "<script>
+    Swal.fire({
+    position: 'top-end',
+    icon: 'success',
+    title: 'Admin has been added successfully',
+    showConfirmButton: false,
+    timer: 2500
+  })
+</script>";
         }
     }
 

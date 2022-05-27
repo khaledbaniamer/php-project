@@ -22,6 +22,16 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 
     $adding->execute();
 
+    echo "<script>
+    Swal.fire({
+    position: 'top-end',
+    icon: 'success',
+    title: 'Coupon has been added successfully',
+    showConfirmButton: false,
+    timer: 2500
+  })
+</script>";
+
     // $Ad=$pdo->prepare($adding);
 
 

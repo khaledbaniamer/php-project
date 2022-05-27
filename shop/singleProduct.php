@@ -2,8 +2,13 @@
 session_start();
 require_once "../connect2.php";
 include_once "../headFoot/header.php";
+// 2022-----------------------------------------------------
+include "../ip_address.php";
+// 2022-----------------------------------------------------
 
 $id_user = $_SESSION['user_id '] ?? 0;
+
+
 
 
 ?>
@@ -40,6 +45,9 @@ if (isset($_GET['id'])) {
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
   <link rel="stylesheet" href="../css/singleP.css">
+
+  <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
 </head>
 
 
@@ -47,6 +55,9 @@ if (isset($_GET['id'])) {
 
 
 <body>
+
+
+
   <main class="container">
 
     <!-- Left Column /   Image -->
@@ -98,20 +109,24 @@ if (isset($_GET['id'])) {
     </div>
 
     <?php
+    // 2022-----------------------------------------------------
+    $ip_address = get_client_ip();
+    // 2022-----------------------------------------------------
 
     if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['add_cart'])) {
 
       if (!empty($_POST['quantity'])) {
 
         $id_prd = $_GET['id'];
-        $id = $_SESSION['user_id ']??0;
+        $id = $_SESSION['user_id '] ?? 0;
         $check = $conn->query("SELECT * FROM cart_temp WHERE product_id = '$id_prd' and customer_id = ' $id' ");
         $row = $check->fetchAll(PDO::FETCH_ASSOC);
         if ($row) {
           echo "<script>alert('this item already added to cart')</script>";
         } else {
 
-          $sqlInsert = "INSERT INTO cart_temp( product_id, product_name, product_price, customer_id ,quantity) VALUES (:prd_id,:prd_name,:prd_price,:cust_id , :qty) ";
+          // 2022-----------------------------------------------------
+          $sqlInsert = "INSERT INTO cart_temp( product_id, product_name, product_price, customer_id, 	customer_ip,quantity) VALUES (:prd_id,:prd_name,:prd_price,:cust_id ,:ip, :qty) ";
 
           $stat = $conn->prepare($sqlInsert);
           $stat->execute([
@@ -119,7 +134,9 @@ if (isset($_GET['id'])) {
             ":prd_name" => $product['product_name'],
             ":prd_price" => $product['product_price'],
             ":cust_id" => $id_user,
+            ":ip" => $ip_address,
             ":qty" => $_POST['quantity']
+            // 2022-----------------------------------------------------
 
           ]);
           echo "<script>
@@ -128,7 +145,7 @@ if (isset($_GET['id'])) {
           icon: 'success',
           title: 'Item has been added to cart successfully',
           showConfirmButton: false,
-          timer: 1500
+          timer: 2000
         })
       </script>";
         }
@@ -156,11 +173,13 @@ if (isset($_GET['id'])) {
   <?php
   $pr_id = $_GET['id'];
 
+  // echo $id_user;
+  if ($_SERVER["REQUEST_METHOD"] == "POST"  && isset($_POST["comment"])) {
 
-  if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_SESSION['user_name ']) && isset($_POST["comment"])) {
     $com = $_POST["comment"];
     if ($com != "") {
-      if ($com != "") {
+      if ($id_user) {
+
         $u_name =  $_SESSION['user_name '];
         $pr_di = $_POST["id_comment"];
 
@@ -170,11 +189,24 @@ if (isset($_GET['id'])) {
         $result->bindParam(':product_id', $pr_di);
         $result->execute();
       } else {
-        //echo <script>
-      }
-    }
-  }
+        echo $id_user;
+
   ?>
+        <script>
+          Swal.fire({
+            title: 'You must be logged in to be able to write a comment',
+            showClass: {
+              popup: 'animate__animated animate__fadeInDown'
+            },
+            hideClass: {
+              popup: 'animate__animated animate__fadeOutUp'
+            }
+          })
+        </script>"; <?php
+                  }
+                }
+              }
+                    ?>
 
   <div class="row d-flex flex-column  ">
     <div>
@@ -191,7 +223,7 @@ if (isset($_GET['id'])) {
                 <button class="btn btn-secondary" type="submit" value="comment">Comment</button>
               </div>
 
-              
+
               <input type="hidden" name="id_comment" value="<?php echo $pr_id; ?>">
 
               <input type="hidden" name="name_comment" value="<?php echo $_SESSION['user_name ']; ?>">

@@ -54,7 +54,7 @@ $count=1;
                 <?php endforeach ?>
             </tbody>
         </table>
-        <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+        
 </body>
 </html>
 
@@ -66,10 +66,15 @@ if(isset($_POST['delete1'])){
     $sql = "DELETE FROM comment WHERE comment_id = '$comment_id'";
     $conn->query($sql);
 
-    echo "
-        <script>
-            alert('delete')
-        </script>
-    ";
+    echo "<script>
+    Swal.fire({
+    position: 'top-end',
+    icon: 'success',
+    title: 'Coment has been deleted successfully',
+    showConfirmButton: false,
+    timer: 2500
+  })
+</script>";
+
 }
 ?>

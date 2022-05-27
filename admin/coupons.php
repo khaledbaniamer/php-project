@@ -81,6 +81,16 @@ echo $id;
 $sqlDelete = "DELETE FROM discount WHERE discount_id = '$id'";
 $pdo->exec($sqlDelete);
 
+echo "<script>
+    Swal.fire({
+    position: 'top-end',
+    icon: 'success',
+    title: 'Coupon has been daleted successfully',
+    showConfirmButton: false,
+    timer: 2500
+  })
+</script>";
+
 }
 ?>
 

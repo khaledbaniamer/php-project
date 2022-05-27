@@ -2,6 +2,7 @@
 session_start();
 require_once "../connect2.php";
 include_once "../headFoot/header.php";
+include "../ip_address.php";
 
 ?>
 
@@ -154,12 +155,11 @@ if (isset($_POST['placeorder']) && isset($_SESSION['cart']) && !empty($_SESSION[
                             </tr>
                         </thead>
                         <?php
-
-
-                        //update2022--add "WHERE customer_id='$user_id'"-----------------------------
-                        $user_id =  $_SESSION['user_id ']??0;
-                        $stat = $conn->query("SELECT * FROM cart_temp WHERE customer_id='$user_id'  ");
-                        //update2022-------------------------------------------------------------------
+                        //2022-----------------------------
+                        $ip_address = get_client_ip();
+                        $user_id =  $_SESSION['user_id '] ?? 0;
+                        $stat = $conn->query("SELECT * FROM cart_temp WHERE customer_id='$user_id' or customer_ip='$ip_address'");
+                        //2022-------------------------------------------------------------------
 
                         $rows = $stat->fetchAll(PDO::FETCH_ASSOC);
                         ?>
@@ -172,36 +172,37 @@ if (isset($_POST['placeorder']) && isset($_SESSION['cart']) && !empty($_SESSION[
                         ?>
                             <tbody class="cartWrap">
 
-                    <!-- // update 23/5/2022 -->
-                    <?php
-                    $total_coupon = 0;
-                    $total = 0;
-                    foreach ($rows as $row) :
-                        $total_coupon += $row['quantity'] * $row['product_price'];
-                        $total = $total_coupon;
-                    ?>
-                        <tr>
-                            <td class="img" scope="row">
+                                <!-- // update 23/5/2022 -->
+                                <?php
+                                $total_coupon = 0;
+                                $total = 0;
+                                
+                                foreach ($rows as $row) :
+                                    $total_coupon += $row['quantity'] * $row['product_price'];
+                                    $total = $total_coupon;
+                                ?>
+                                    <tr>
+                                        <td class="img" scope="row">
 
-                                <img src="../fwy6zosqphc8hzjk0rgr.webp" width="50" height="50" alt="<?= $product['product_name'] ?>">
-                                </a>
-                            </td>
-                            <td>
-                                <a href="cart2.php?page=product&id="><?= $row['product_name'] ?></a>
-                                <br>
+                                            <!-- <img src="../admin/image/product_image/<?php $row['product_image'] ?>" width="50" height="50" alt="<?= $product['product_name'] ?>"> -->
+                                            </a>
+                                        </td>
+                                        <td>
+                                            <a href="cart2.php?page=product&id="><?= $row['product_name'] ?></a>
+                                            <br>
 
-                            </td>
-                            <td class="price"><?= $row['product_price'] ?></td>
-                            <td class="quantity">
-                                <form method="post">
-                                    <input type="number" name="prd_quantity" value="<?= $row['quantity'] ?>" min="1" placeholder="Quantity" required>
+                                        </td>
+                                        <td class="price"><?= $row['product_price'] ?></td>
+                                        <td class="quantity">
+                                            <form method="post">
+                                                <input type="number" name="prd_quantity" value="<?= $row['quantity'] ?>" min="1" placeholder="Quantity" required>
 
-                            </td>
-                            <td class="price"><?= $row['quantity'] * $row['product_price'] ?> JOD </td>
-                            <td>
-                                <a href="cart2.php?delete_product=<?= $row['product_id'] ?>" class="btn btn-danger p-1">Delete</a>
-                                <input type="hidden" value="<?= $row['product_id'] ?>" name="update_product">
-                                <input type="submit" name="Update" value="Update" class="btn btn-secondary mx-2" style="background-color :#ef7828 ;" >
+                                        </td>
+                                        <td class="price"><?= $row['quantity'] * $row['product_price'] ?> JOD </td>
+                                        <td>
+                                            <a href="cart2.php?delete_product=<?= $row['product_id'] ?>" class="btn btn-danger p-1">Delete</a>
+                                            <input type="hidden" value="<?= $row['product_id'] ?>" name="update_product">
+                                            <input type="submit" name="Update" value="Update" class="btn btn-secondary mx-2" style="background-color :#ef7828 ;">
                 </form>
                 </td>
                 </tr>
@@ -293,7 +294,10 @@ if (isset($_POST['placeorder']) && isset($_SESSION['cart']) && !empty($_SESSION[
                         confirmButtonText: "<a href='../registration/login.php'><i class='fa fa-thumbs-up'></i> login!</a> ",
                         confirmButtonAriaLabel: 'Thumbs up, great!',
                     })
+                    
                 </script>
+
+                
 
             <?php } ?>
 
@@ -316,7 +320,7 @@ if (isset($_POST['placeorder']) && isset($_SESSION['cart']) && !empty($_SESSION[
         $delete_prd = $_GET['delete_product'];
         $stat = $conn->query("DELETE FROM `cart_temp` WHERE product_id='$delete_prd'");
 
-    echo "<script>window.location.href = 'http://localhost/php_mysql_project/check_cart/cart2.php'</script>";
+        echo "<script>window.location.href = 'http://localhost/php_mysql_project/check_cart/cart2.php'</script>";
     }
     if (isset($_POST['Update'])) {
         $updateQty = $_POST['prd_quantity'];
@@ -326,9 +330,8 @@ if (isset($_POST['placeorder']) && isset($_SESSION['cart']) && !empty($_SESSION[
         $stat = $conn->query($sql);
 
         echo "<script>window.location.href = 'http://localhost/php_mysql_project/check_cart/cart2.php'</script>";
-
     }
-       
+
     ?>
 
 </body>

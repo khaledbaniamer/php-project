@@ -52,6 +52,16 @@ $admin = view_one_admin($connect , $id)
             $email = $_POST['admin_email'];
             $password = $_POST['admin_password'];
             update_admin($connect , $name , $email , $password , $id);
+
+            echo "<script>
+    Swal.fire({
+    position: 'top-end',
+    icon: 'success',
+    title: 'Admin has been updated successfully',
+    showConfirmButton: false,
+    timer: 2500
+  })
+</script>";
         }
     }
 ?>

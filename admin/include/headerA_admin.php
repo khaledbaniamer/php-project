@@ -1,3 +1,6 @@
+
+
+
 <!doctype html>
 <html lang="en">
 
@@ -149,14 +152,9 @@ border: transparent;
                         <li class="active">
                             <a  class="btn btn-outline-light mb-4" href="home.html">Home</a>
                         </li>
+
                         <li>
-                            <a  class="btn btn-outline-light mb-4" href="#">Shop</a>
-                        </li>
-                        <li>
-                            <a class="btn btn-outline-light mb-4"  href="#">Cart</a>
-                        </li>
-                        <li>
-                            <a  class="btn btn-outline-light mb-4" href="#">Contact Us</a>
+                            <a  class="btn btn-outline-light mb-4" href="#">Logout</a>
                         </li>
                         <li>
                             <a  class="btn btn-outline-light mb-4" href="#"></a>

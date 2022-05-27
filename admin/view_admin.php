@@ -57,5 +57,15 @@ if(isset($_POST['delete1'])){
     $id = $_POST['deleteadmin'];
 
     delete_admin($connect , $id);
+
+    echo "<script>
+    Swal.fire({
+    position: 'top-end',
+    icon: 'success',
+    title: 'Admin has been deleted successfully',
+    showConfirmButton: false,
+    timer: 2500
+  })
+</script>";
 }
 ?>

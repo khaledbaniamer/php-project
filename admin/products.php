@@ -94,6 +94,16 @@ if(isset($_POST['delete1'])){
     $sqlDelete = "DELETE FROM products WHERE product_id = '$id'";
     $delete = $pdo->exec($sqlDelete);
 
+    echo "<script>
+    Swal.fire({
+    position: 'top-end',
+    icon: 'success',
+    title: 'Product has been deleted successfully',
+    showConfirmButton: false,
+    timer: 2500
+  })
+</script>";
+
 }
 ?>
 

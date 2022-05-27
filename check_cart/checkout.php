@@ -1,11 +1,12 @@
 <?php
 
 
-
+include "../ip_address.php";
 session_start();
 $sess = $_SESSION['user_id '] ?? 3;
 
 require "../connect2.php";
+
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 } else {
@@ -136,15 +137,17 @@ $subtotal = 0.00;
 
 
                             <form method="post">
+                                <input type="hidden" value="out" name="out">
                                 <input class="btn btn-primary" type="submit" value="proceed to Check Out">
                             </form>
 
                             <?php
                             $user_id =  $_SESSION['user_id '];
-
+                            $ip_address = get_client_ip();
+                           // echo  $user_id;
                             if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
-                                $user_id =  $_SESSION['user_id '];
+                               // $user_id =  $_SESSION['user_id '];
 
                                 //insert new order-----------
                                 $adding = $conn->prepare("INSERT INTO `orders`(`order_id`,`order_time`,`user_id`) VALUES (NULL,NULL,'$user_id')");
@@ -157,8 +160,8 @@ $subtotal = 0.00;
                                 $user = $result->fetch();
                                 $order = $user['order_id'];
 
-                                // gat all product from cart whaer id
-                                $q = "SELECT * FROM `cart_temp` WHERE customer_id='$user_id'";
+                                // gat all product from cart whaer id = user_id
+                                $q = "SELECT * FROM `cart_temp` WHERE customer_id='$user_id' or customer_ip='$ip_address'";
                                 $result = $conn->query($q);
                                 $user = $result->fetchAll();
 
@@ -171,7 +174,7 @@ $subtotal = 0.00;
                                 }
 
                                 // delete product from cart after "proceed to Check Out"
-                                $adding = $conn->prepare("DELETE FROM `cart_temp` WHERE customer_id='$user_id'");
+                                $adding = $conn->prepare("DELETE FROM `cart_temp` WHERE customer_id='$user_id' or customer_ip='$ip_address'");
                                 $adding->execute();
                                 header("Location:orderplaced.php");
                             }

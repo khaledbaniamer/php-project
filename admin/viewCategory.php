@@ -55,8 +55,17 @@ $all_categories = select_category($connect);
 if(isset($_POST['delete'])){
 
     $id = $_POST['delete'];
-    echo $id;
+   // echo $id;
     delete_category($connect , $id);
+    echo "<script>
+    Swal.fire({
+    position: 'top-end',
+    icon: 'success',
+    title: 'Category has been deleted successfully',
+    showConfirmButton: false,
+    timer: 2500
+  })
+</script>";
 }
 ?>
 

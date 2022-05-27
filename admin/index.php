@@ -18,6 +18,15 @@
         </a>
       </li>
 
+      <li data-toggle="collapse" data-target="#order" class="collapsed mt-2">
+        <a href="#"><i class="fa fa-gift fa-lg"></i>Ordeds <span class="arrow"></span></a>
+      </li>
+      <ul class="sub-menu collapse" id="order">
+        <li><a href="index.php?Waiting_orders">Waiting orders</a></li>
+        <li><a href="index.php?Paid_orders">Paid orders</a></li>
+
+      </ul>
+
 
       <li data-toggle="collapse" data-target="#products" class="collapsed mt-2">
         <a href="#"><i class="fa fa-gift fa-lg"></i>Categories <span class="arrow"></span></a>
@@ -75,6 +84,14 @@
   </div>
 </div>
 <div class="container float-end">
+
+
+  <?php if (isset($_GET['Waiting_orders'])) include "Waiting_orders.php"; ?>
+  <?php if (isset($_GET['Paid_orders'])) include "Paid_orders.php"; ?>
+  <?php if (isset($_GET['view_order'])) include "view_order.php"; ?>
+  
+
+
   <?php if (isset($_GET['view_category'])) include "viewCategory.php"; ?>
   <?php if (isset($_GET['update'])) include "update_category.php"; ?>
   <?php if (isset($_GET['add_category'])) include "addCategory.php"; ?>
