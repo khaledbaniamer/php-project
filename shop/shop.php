@@ -121,14 +121,14 @@ $products = $stmt->fetchAll(PDO::FETCH_ASSOC);
 										<img src="../admin/image/product_image/<?=$product['product_image'] ?>" alt="" />
 											<p><?php echo $product['product_name'] ?></p>
 
-											<h2><?php echo $product['product_price'] ?></h2>
+											<h2><?php echo $product['product_price'] ?> JOD</h2>
 
 										</div>
 										<div class="product-overlay">
 
 											<div class='overlay-content'>
 												<p><?php echo $product['product_name'] ?></p>
-												<h2><?php echo $product['product_price'] ?></h2>
+												<h2><?php echo $product['product_price'] ?> JOD</h2>
 												<a href="singleProduct.php?id=<?php echo $product['product_id'] ?>" class='btn btn-default add-to-cart'>VIEW </a>
 
 											</div>

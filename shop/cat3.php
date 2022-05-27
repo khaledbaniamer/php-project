@@ -114,7 +114,7 @@ $products = $stmt->fetchAll(PDO::FETCH_ASSOC);
 									<img src="../admin/image/product_image/<?=$product['product_image'] ?>" alt="<?= $product['product_name']?>" />
 
 										
-										<h2><?php echo $product['product_price']?></h2>
+										<h2><?php echo $product['product_price']?>JOD</h2>
 										<p><?php echo $product['product_name']?></p>
 
 									</div>
@@ -122,7 +122,7 @@ $products = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 										<div class='overlay-content'>
 
-											<h2><?php echo $product['product_price']?></h2>
+											<h2><?php echo $product['product_price']?>JOD</h2>
 											<p><?php echo $product['product_name']?></p>
 											<a href="singleProduct.php?id=<?php echo $product['product_id']?>"  class='btn btn-default add-to-cart'>VIEW </a>
 
