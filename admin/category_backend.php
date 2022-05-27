@@ -199,6 +199,8 @@ function select_paid_orders($connect){
     return $row;
 }
 
-function update_order($connect , $id){
-    $sql = "";
+function delete_product_in_order($connect , $id){
+    $sql = "DELETE FROM orders_details WHERE product_id = '$id'";
+    $connect->exec($sql);
+
 }

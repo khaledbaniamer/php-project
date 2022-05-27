@@ -62,7 +62,23 @@ $all_product = select_orders_details($connect, $i);
 
 <?php 
     if(isset($_POST['delete'])){
-        
+        $prd_id = $_POST['product_id'];
+        delete_product_in_order($connect , $prd_id);
+        $order_id = $_GET['view_order'];
+        echo "
+        <script>
+        window.location.href = 'index.php?view_order=$order_id'
+        </script>";
+
+        echo "<script>
+        Swal.fire({
+        position: 'top-end',
+        icon: 'success',
+        title: 'Category has been updated successfully',
+        showConfirmButton: false,
+        timer: 2000
+      })
+      </script>";
     }
 ?>
 
