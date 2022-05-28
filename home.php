@@ -155,7 +155,9 @@ $cats = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
       <div class="container">
         <div class="row">
-          <?php foreach ($cats as $cat) : ?>
+          <?php 
+          $i=1;
+          foreach ($cats as $cat) : ?>
             <div class="col-md-4">
               <div class="card text-white card-has-bg click-col" style="background-image:url('admin/image/image_category/<?= $cat['category_image'] ?>');">
 
@@ -164,7 +166,7 @@ $cats = $stmt->fetchAll(PDO::FETCH_ASSOC);
                     <small class="card-meta mb-2">View Our Collections Of</small>
                     <h4 class="card-title mt-0 ">
                       <!-- <a class="text-white" herf="#">Fittness Equipment</a> -->
-                      <a href="../php_Mysql_project/shop/shop.php"><?php echo $cat['category_name'] ?></a>
+                      <a href="../php_Mysql_project/shop/cat<?php echo $i++ ?>.php"><?php echo $cat['category_name'] ?></a>
                     </h4>
                   </div>
                 </div>
