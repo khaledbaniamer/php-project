@@ -18,16 +18,15 @@ $all_product = select_orders_details($connect, $i);
                 <th scope="col">name</th>
                 <th scope="col">image</th>
                 <th scope="col">price</th>
-                <th scope="col">description</th>
                 <th scope="col">category</th>
                 <th scope="col">quantity</th>
                 <th scope="col">Action</th>
             </tr>
         </thead>
         <tbody>
-            <?php for ($i = 0; $i < count($all_product); $i++) { 
-                
-                $delails = select_product($connect, $all_product[$i]['product_id']);?>
+            <?php for ($i = 0; $i < count($all_product); $i++) {
+
+                $delails = select_product($connect, $all_product[$i]['product_id']); ?>
                 <tr>
 
                     <th scope="row"><?php echo $delails["product_id"] ?></th>
@@ -38,7 +37,6 @@ $all_product = select_orders_details($connect, $i);
 
                     <td><?php echo $delails["product_price"] ?></td>
 
-                    <td><?php echo $delails["product_description"] ?></td>
 
                     <td><?php echo $delails["category_id"]  ?></td>
                     <form action="" method="post">
@@ -60,26 +58,53 @@ $all_product = select_orders_details($connect, $i);
     </table>
 </div>
 
-<?php 
-    if(isset($_POST['delete'])){
-        $prd_id = $_POST['product_id'];
-        delete_product_in_order($connect , $prd_id);
-        $order_id = $_GET['view_order'];
-        echo "
+<?php
+
+if (isset($_POST['delete'])) {
+    $prd_id = $_POST['product_id'];
+    delete_product_in_order($connect, $prd_id);
+    $order_id = $_GET['view_order'];
+    echo "
         <script>
         window.location.href = 'index.php?view_order=$order_id'
         </script>";
 
-        echo "<script>
+    echo "<script>
         Swal.fire({
         position: 'top-end',
         icon: 'success',
-        title: 'Category has been updated successfully',
+        title: 'product-order has been deleted successfully',
         showConfirmButton: false,
         timer: 2000
       })
       </script>";
-    }
+}
+
+
+
+
+if (isset($_POST['update'])) {
+    $prd_id = $_POST['product_id'];
+    $new_quantity = $_POST['product_qty'];
+    $order_id = $_GET['view_order'];
+    Update_quantity($connect,$order_id,$prd_id,$new_quantity);
+
+
+    echo "
+        <script>
+        window.location.href = 'index.php?view_order=$order_id'
+        </script>";
+
+    echo "<script>
+        Swal.fire({
+        position: 'top-end',
+        icon: 'success',
+        title: 'prodeuc-order has been updated successfully',
+        showConfirmButton: false,
+        timer: 2000
+      })
+      </script>";
+}
 ?>
 
 <!-- Optional JavaScript -->

@@ -204,3 +204,13 @@ function delete_product_in_order($connect , $id){
     $connect->exec($sql);
 
 }
+
+function Update_quantity($connect,$order_id,$prd_id,$new_quantity){
+    $sql_update = "UPDATE orders_details SET quantity=:qut WHERE order_id = '$order_id' and product_id ='$prd_id'";
+    $stat = $connect->prepare($sql_update);
+    $stat->execute([
+        ":qut"=>$new_quantity,
+
+    ]);
+
+}

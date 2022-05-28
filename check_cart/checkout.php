@@ -216,7 +216,7 @@ $subtotal = 0.00;
                         <?php
                         $user_id =  $_SESSION['user_id '];
                         // updatr2022 add customer_id='$user_id' to query----------------------------------
-                        $stat = $conn->query("SELECT * FROM cart_temp WHERE  customer_id='$user_id' ");
+                        $stat = $conn->query("SELECT * FROM cart_temp WHERE  customer_id='$user_id' or customer_ip='$ip_address' ");
                         $rows = $stat->fetchAll(PDO::FETCH_ASSOC);
                         $total = 0;
                         foreach ($rows as $row) :
@@ -270,12 +270,12 @@ $subtotal = 0.00;
 
                                     <tr class="shipping-cost">
                                         <td>After Coupon</td>
-                                        <td><?php echo $_SESSION['total_coupon'] ?></td>
+                                        <td><?php echo $_SESSION['total_coupon'] ?? 0 ?></td>
                                     </tr>
                                     <tr>
                                         <td>Total</td>
                                         <td><span><?php
-                                                    if ($_SESSION['total_coupon'] == $total) {
+                                                    if (($_SESSION['total_coupon'] ?? 0) == $total) {
                                                         echo $total;
                                                     } else {
                                                         echo $_SESSION['total_coupon'];

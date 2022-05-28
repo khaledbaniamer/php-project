@@ -19,7 +19,7 @@
       </li>
 
       <li data-toggle="collapse" data-target="#order" class="collapsed mt-2">
-        <a href="#"><i class="fa fa-gift fa-lg"></i>Ordeds <span class="arrow"></span></a>
+        <a href="#"><i class="fa fa-gift fa-lg"></i>Orders <span class="arrow"></span></a>
       </li>
       <ul class="sub-menu collapse" id="order">
         <li><a href="index.php?Waiting_orders">Waiting orders</a></li>
@@ -64,13 +64,22 @@
 
       </ul>
 
+      <?php
+      //-------------------2022-----------------------------------------------
+      // include "../connect.php";
+      // $admin_id = $_SESSION['admin_id'];
+      // $login = "SELECT * FROM `admin` where admin_id= '$admin_id'";
+      // $result = $connect->query($login);
+      // $user = $result->fetch();
+      // if ($user['admin_id'] == 1) {
+      // 
+      // ?>
       <li data-toggle="collapse" data-target="#admin" class="collapsed mt-2">
         <a href="#"><i class="fa fa-gift fa-lg"></i>Admin <span class="arrow"></span></a>
       </li>
       <ul class="sub-menu collapse" id="admin">
         <li><a href="index.php?add_admin">Add Admin</a></li>
         <li><a href="index.php?view_admin">View Admin</a></li>
-
       </ul>
 
       <li data-toggle="collapse" data-target="#comment" class="collapsed mt-2">
@@ -89,7 +98,7 @@
   <?php if (isset($_GET['Waiting_orders'])) include "Waiting_orders.php"; ?>
   <?php if (isset($_GET['Paid_orders'])) include "Paid_orders.php"; ?>
   <?php if (isset($_GET['view_order'])) include "view_order.php"; ?>
-  
+
 
 
   <?php if (isset($_GET['view_category'])) include "viewCategory.php"; ?>
