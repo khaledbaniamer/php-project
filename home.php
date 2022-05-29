@@ -273,8 +273,14 @@ $cats = $stmt->fetchAll(PDO::FETCH_ASSOC);
             <h1 class="large-font" style="color:#ef7828;">
               <b>Why Purchase Our Products?</b>
             </h1>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eius quam id quibusdam distinctio commodi tempore mollitia asperiores a architecto aliquid dolores, harum eveniet veritatis quia, magni suscipit eum corporis quod?
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Eius quam id quibusdam distinctio commodi tempore mollitia asperiores a architecto aliquid dolores, harum eveniet veritatis quia, magni suscipit eum corporis quod?Lorem ipsum dolor sit amet consectetur adipisicing elit. Eius quam id quibusdam distinctio commodi tempore mollitia asperiores a architecto aliquid dolores, harum eveniet veritatis quia, magni suscipit eum corporis quod?Lorem ipsum dolor sit amet consectetur adipisicing elit. Eius quam id quibusdam distinctio commodi tempore mollitia asperiores a architecto aliquid dolores, harum eveniet veritatis quia, magni suscipit eum corporis quod?Lorem ipsum dolor sit amet consectetur adipisicing elit. Eius quam id quibusdam distinctio commodi tempore mollitia asperiores a architecto aliquid dolores, harum eveniet veritatis quia, magni suscipit eum corporis quod?Lorem ipsum dolor sit amet consectetur adipisicing elit. Eius quam id quibusdam distinctio commodi tempore mollitia asperiores a architecto aliquid dolores, harum eveniet veritatis quia, magni suscipit eum corporis quod?Lorem ipsum dolor sit amet consectetur adipisicing elit. Eius quam id quibusdam distinctio commodi tempore mollitia asperiores a architecto aliquid dolores, harum eveniet veritatis quia, magni suscipit eum corporis quod?
+            <p>LAt Focus Zone , we believe there is a better way to do marketing. A more
+                  valuable, less invasive way where customers are earned rather than
+                  bought. We're obsessively passionate about it, and our mission is to
+                  help people achieve it. We focus on search engine optimization
+                  (SEO). It's one of the least understood and least transparent aspects
+                  of great marketing, and we see that as an opportunity.
+
+                  Lorem ipsum dolor sit, amet consectetur adipisicing elit. Enim accusamus, fuga cupiditate obcaecati nemo aliquid laborum unde, perspiciatis architecto tenetur laudantium ducimus at veniam rerum corporis deserunt modi sit blanditiis.
             </p>
           </div>
           <div class="column-33">
